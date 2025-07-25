@@ -4,6 +4,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.FileWriter;
+import java.net.URI;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.Year;
+
 @Configuration
 @ComponentScan(basePackages = ("com.xworkz.google.Bike"))
 public class BikeConfiguaration {
@@ -67,6 +77,61 @@ public class BikeConfiguaration {
         System.out.println("bikeWelcome Config");
         System.out.println("--------------------");
         return new StringBuilder("Welcome");
+    }
+
+    @Bean
+    public Thread jobThread() {
+        System.out.println("Thread Bean Created");
+        return new Thread();
+    }
+
+    @Bean
+    public Path jobPath() {
+        System.out.println("Path Bean Created");
+        return Paths.get("C:/data");
+    }
+
+    @Bean
+    public Duration jobDuration() {
+        System.out.println("Duration Bean Created");
+        return Duration.ofHours(5);
+    }
+
+    @Bean
+    public FileWriter jobFileWriter() throws Exception {
+        System.out.println("FileWriter Bean Created");
+        return new FileWriter("output.txt", true);
+    }
+
+
+    @Bean
+    public Instant jobInstant() {
+        System.out.println("Instant Bean Created");
+        return Instant.now();
+    }
+
+    @Bean
+    public Timestamp jobTimestamp() {
+        System.out.println("Timestamp Bean Created");
+        return new Timestamp(System.currentTimeMillis());
+    }
+
+    @Bean
+    public Year jobYear() {
+        System.out.println("Year Bean Created");
+        return Year.now();
+    }
+
+    @Bean
+    public URI jobURI() throws Exception {
+        System.out.println("URI Bean Created");
+        return new URI("https://xworkz.in/careers");
+    }
+
+    @Bean
+    public Charset jobCharset() {
+        System.out.println("Charset Bean Created");
+        return Charset.defaultCharset();
     }
 
 

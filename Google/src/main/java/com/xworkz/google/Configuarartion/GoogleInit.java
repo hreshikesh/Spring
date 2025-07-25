@@ -7,7 +7,7 @@ public class GoogleInit extends AbstractAnnotationConfigDispatcherServletInitial
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{PizzaHutConfiguaration.class,BikeConfiguaration.class,TrainConfiguaration.class,MobileConfiguaration.class};
+        return new Class[]{PizzaHutConfiguaration.class,BikeConfiguaration.class,TrainConfiguaration.class,MobileConfiguaration.class,BusConfiguarartion.class};
     }
 
     @Override

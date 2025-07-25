@@ -75,6 +75,24 @@ public class MobileConfiguaration {
         return stack;
     }
 
+    @Bean
+    public Class<?> companyClassRef() {
+        System.out.println(" Class Config ");
+        return String.class;
+    }
+
+    @Bean
+    public Calendar companyCalendar() {
+        System.out.println("companyCalendar Config");
+        return Calendar.getInstance();
+    }
+
+    @Bean
+    public UUID companyUUID() {
+        System.out.println("UUID Config");
+        return UUID.randomUUID();
+    }
+
 
     public enum MobileType {
         ELECTRIC,

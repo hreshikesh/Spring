@@ -4,6 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.Comparator;
+import java.util.Timer;
+
 @Configuration
 @ComponentScan(basePackages = ("com.xworkz.google.PizzaHut"))
 public class PizzaHutConfiguaration {
@@ -70,6 +75,29 @@ public class PizzaHutConfiguaration {
 
     }
 
+    @Bean
+    public PrintWriter jobPrintWriter() throws Exception {
+        System.out.println("PrintWriter Bean Created");
+        return new PrintWriter("print.txt");
+    }
+    @Bean
+    public BigDecimal jobBigDecimal() {
+        System.out.println("BigDecimal Bean Created");
+        return new BigDecimal("123456.78");
+    }
+
+    @Bean
+    public Comparator<String> jobComparator() {
+        System.out.println("Comparator Bean Created");
+        return Comparator.naturalOrder();
+    }
+
+
+    @Bean
+    public Timer jobTimer() {
+        System.out.println("Timer Bean Created");
+        return new Timer();
+    }
 
 
 
