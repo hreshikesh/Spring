@@ -14,6 +14,8 @@
     <li><a href="milk.jsp">Milk</a></li>
     <li><a href="curry.jsp">Curry</a></li>
     <li><a href="biriyani.jsp">Biriyani</a></li>
+    <li><a href="parota.jsp">Parota</a></li>
+    <li><a href="egg.jsp">Egg</a></li>
 </ol>
 
 

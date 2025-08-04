@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Link1</h2>
+<h2>Milk</h2>
 <form action="milk" method="post">
     <button type="submit">milk click</button>
 </form>

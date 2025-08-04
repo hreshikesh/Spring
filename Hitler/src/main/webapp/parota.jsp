@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Link1</h2>
+<h2>Parota</h2>
 <form action="parota" method="post">
     <button type="submit">parota click</button>
 </form>
