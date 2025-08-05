@@ -12,11 +12,11 @@ public class AvengerRunner {
 
         //we get a ref of bean by getBean() with arg passed as the  beanname and classname
         String location=applicationContext.getBean("getThorLocation",String.class);
-        System.out.println(location);
+        System.out.println("getThorLocation ="+location);
 
 
         int no=applicationContext.getBean("getAvengerNo",int.class);
-        System.out.println(no);
+        System.out.println("getAvengerNo bean ="+no);
 
 
     }
