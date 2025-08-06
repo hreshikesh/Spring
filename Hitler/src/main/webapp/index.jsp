@@ -4,7 +4,7 @@
 <ol>
     <li><a href="link1.jsp">link1</a></li>
     <li><a href="soap.jsp">Soap</a></li>
-    <li><a href="soap.jsp">Butter</a></li>
+    <li><a href="butter.jsp">Butter</a></li>
     <li><a href="bottle.jsp">Bottle</a></li>
     <li><a href="shoe.jsp">Shoe</a></li>
     <li><a href="chappal.jsp">Chappal</a></li>
