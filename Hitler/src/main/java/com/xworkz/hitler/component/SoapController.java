@@ -1,0 +1,25 @@
+package com.xworkz.hitler.component;
+
+import com.xworkz.hitler.dto.SoapDto;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+public class SoapController {
+
+    public SoapController() {
+        System.out.println("Created SoapComponent");
+    }
+
+    @RequestMapping("soap")
+    public String handleSoap(SoapDto soapDto) {
+
+        System.out.println("Running SoapComponent...");
+        System.out.println("Soap - Type: " + soapDto.getType() + ", Origin: " + soapDto.getOrigin() +
+                ", Company: " + soapDto.getCompany() + ", Price: " + soapDto.getPrice() + ", Quantity: " + soapDto.getQuantity());
+
+        return "soap.jsp";
+    }
+}

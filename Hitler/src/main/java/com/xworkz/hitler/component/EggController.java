@@ -1,15 +1,14 @@
 package com.xworkz.hitler.component;
 
 import com.xworkz.hitler.dto.EggDto;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@Component
+@Controller
 @RequestMapping("/")
-public class EggComponent {
+public class EggController {
 
-    public EggComponent() {
+    public EggController() {
         System.out.println("Running EggComponent const");
     }
 
