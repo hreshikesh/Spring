@@ -1,5 +1,6 @@
 package com.xworkz.hitler.component;
 
+import com.xworkz.hitler.dto.EggDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +14,9 @@ public class EggComponent {
     }
 
     @RequestMapping("/egg")
-    public String getEgg(@RequestParam String eggType, String source, int price, String size, int proteinContent) {
+    public String getEgg(EggDto eggDto) {
         System.out.println("getEgg method..");
-        System.out.println("Egg Type: " + eggType + " Source: " + source + " Price: " + price + " Size: " + size + " Protein: " + proteinContent + "g");
+        System.out.println("Egg Type: " + eggDto.getEggType() + " Source: " + eggDto.getSource() + " Price: " + eggDto.getPrice() + " Size: " + eggDto.getSize() + " Protein: " + eggDto.getProteinContent() + "g");
         return "egg.jsp";
     }
 }
