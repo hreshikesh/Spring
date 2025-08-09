@@ -21,6 +21,6 @@ public class HitlerInitConfiguaration extends AbstractAnnotationConfigDispatcher
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/soap","/butter","/bottle","/shoe","/chappal","/socks","/chutney","/onion","/milk","/curry","/biriyani","/parota","/egg"};
+        return new String[]{"/"};
     }
 }

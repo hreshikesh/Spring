@@ -3,7 +3,7 @@ package com.xworkz.hitler.component;
 import com.xworkz.hitler.dto.SockDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Component
 @RequestMapping("/")
