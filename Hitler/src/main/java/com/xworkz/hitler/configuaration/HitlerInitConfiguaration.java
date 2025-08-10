@@ -23,4 +23,8 @@ public class HitlerInitConfiguaration extends AbstractAnnotationConfigDispatcher
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+
+
+
 }
