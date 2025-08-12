@@ -38,6 +38,7 @@
 
         <button class="btn btn-primary " type="submit">Submit Shoe</button>
     </form>
+    <img src="smps.jpeg" alt="">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

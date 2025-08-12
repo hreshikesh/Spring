@@ -15,6 +15,6 @@ public class SockComponent {
     public String getSocks(SockDto sockDto){
         System.out.println("getSock method..");
         System.out.println("SockName "+sockDto.getSockName()+" sockBrand "+sockDto.getSockBrand()+" sockShop "+sockDto.getSockShop()+" sockPrice"+sockDto.getSockPrice()+" sockMaterial "+sockDto.getSockMaterial());
-        return "socks.jsp";
+        return "socks";
     }
 }

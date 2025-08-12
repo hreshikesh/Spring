@@ -43,6 +43,7 @@
 
         </form>
     </div>
+    <img src="smps.jpeg" alt="">
 </div>
 
 </body>

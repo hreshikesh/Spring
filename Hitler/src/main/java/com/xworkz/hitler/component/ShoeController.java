@@ -19,6 +19,6 @@ public class ShoeController {
         System.out.println("Running handleShoe...");
         System.out.println("Shoe - Type: " + shoeDto.getType() + ", Origin: " + shoeDto.getOrigin() + ", Company: " + shoeDto.getCompany() + ", Price: " + shoeDto.getPrice() + ", Quantity: " + shoeDto.getQuantity());
 
-        return "shoe.jsp";
+        return "shoe";
     }
 }

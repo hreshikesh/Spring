@@ -20,6 +20,6 @@ public class SoapController {
         System.out.println("Soap - Type: " + soapDto.getType() + ", Origin: " + soapDto.getOrigin() +
                 ", Company: " + soapDto.getCompany() + ", Price: " + soapDto.getPrice() + ", Quantity: " + soapDto.getQuantity());
 
-        return "soap.jsp";
+        return "soap";
     }
 }

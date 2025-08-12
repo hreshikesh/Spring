@@ -29,6 +29,7 @@
 
     <button class="btn btn-primary " type="submit">socks click</button>
 </form>
+    <img src="smps.jpeg" alt="">
 </div>
 </body>
 </html>

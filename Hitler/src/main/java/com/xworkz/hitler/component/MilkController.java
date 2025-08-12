@@ -15,6 +15,6 @@ public class MilkController {
     public String getMilk(MilkDto milkDto){
         System.out.println("getMilk method..");
         System.out.println("Milk Type: " + milkDto.getMilkType() + ", Source: " + milkDto.getSource() + ", Company: " + milkDto.getCompany() + ", Price: " + milkDto.getPrice() + ", Quantity: " + milkDto.getQuantity());
-        return "milk.jsp";
+        return "milk";
     }
 }

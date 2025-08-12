@@ -40,6 +40,7 @@
         <button class="btn btn-primary" type="submit">Curry Click</button>
 
     </form>
+    <img src="smps.jpeg" alt="">
 </div>
 
 </body>

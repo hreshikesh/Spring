@@ -23,6 +23,6 @@ public class ParotaController {
         System.out.println("running parota....");
         System.out.println("Parota - Type: " + parotaDto.getType() + ", Origin: " + parotaDto.getOrigin() + ", Company: " + parotaDto.getCompany() + ", Price: " + parotaDto.getPrice() + ", Quantity: " + parotaDto.getQuantity());
 
-        return "parota.jsp";
+        return "parota";
     }
 }

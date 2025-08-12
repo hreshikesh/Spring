@@ -23,6 +23,6 @@ public class OnionController {
         System.out.println("Price: " + onionDto.getPrice());
         System.out.println("Quantity: " + onionDto.getQuantity());
 
-        return "onion.jsp";
+        return "onion";
     }
 }
