@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.CarDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -17,7 +19,8 @@ public class CarController {
     public CarController() {
         System.out.println("CarController created...");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("car")
     public ModelAndView getCar(@Valid CarDto carDto, BindingResult bindingResult, ModelAndView modelAndView) {
         System.out.println("Received CarDto: " + carDto);
@@ -26,6 +29,7 @@ public class CarController {
             List<ObjectError> errors = bindingResult.getAllErrors();
             modelAndView.addObject("errors", errors);
         }
+        trainerService.saveCar(carDto);
 
         modelAndView.setViewName("Car");
         return modelAndView;

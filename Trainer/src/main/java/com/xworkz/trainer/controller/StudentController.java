@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.StudentDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,15 @@ public class StudentController {
     public StudentController() {
         System.out.println("const studentcontroller....");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("student")
     public ModelAndView getStudent(@Valid StudentDto studentDto, BindingResult bindingResult, ModelAndView modelAndView) {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("error", bindingResult.getAllErrors());
         }
+        trainerService.saveStudent(studentDto);
+
         modelAndView.setViewName("Student");
         return modelAndView;
     }

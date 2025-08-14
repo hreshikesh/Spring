@@ -1,9 +1,10 @@
 package com.xworkz.trainer.entity;
 
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -16,21 +17,24 @@ public class EmployeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "employee_name")
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "employee_age")
+    private int age;
+
+    @Column(name = "employee_email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "employee_department")
+    private String department;
+
+    @Column(name = "employee_phone")
     private String phone;
 
-    @Column(name = "place")
-    private String place;
+    @Column(name = "employee_salary")
+    private double salary;
 
-    @Column(name = "license_number")
-    private String licenseNumber;
-
-    @Column(name = "vehicle_type")
-    private String vehicleType;
+    @Column(name = "employee_designation")
+    private String designation;
 }

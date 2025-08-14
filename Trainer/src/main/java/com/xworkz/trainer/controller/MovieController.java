@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.MovieDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,14 @@ public class MovieController {
     public MovieController() {
         System.out.println("const moviecontroller....");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("movie")
     public ModelAndView getMovie(@Valid MovieDto movieDto, BindingResult bindingResult, ModelAndView modelAndView) {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("error", bindingResult.getAllErrors());
         }
+        trainerService.saveMovie(movieDto);
         modelAndView.setViewName("Movie");
         return modelAndView;
     }

@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.EmployeeDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -16,13 +18,15 @@ public class EmployeeController {
     public EmployeeController() {
         System.out.println("const employeecontroller....");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("employee")
     public ModelAndView getEmployee(@Valid EmployeeDto employeeDto, BindingResult bindingResult, ModelAndView modelAndView) {
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             modelAndView.addObject("errors", errors);
         }
+        trainerService.saveEmployee(employeeDto);
         modelAndView.setViewName("Employee");
         return modelAndView;
     }

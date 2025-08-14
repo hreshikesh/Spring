@@ -1,9 +1,10 @@
 package com.xworkz.trainer.entity;
 
-import javax.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -16,24 +17,24 @@ public class DriverEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "driver_name")
     private String name;
 
-    @Column(name = "age")
+    @Column(name = "driver_age")
     private int age;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "department")
-    private String department;
-
-    @Column(name = "phone")
+    @Column(name = "driver_phone")
     private String phone;
 
-    @Column(name = "salary")
-    private double salary;
+    @Column(name = "driver_email")
+    private String email;
 
-    @Column(name = "designation")
-    private String designation;
+    @Column(name = "driver_place")
+    private String place;
+
+    @Column(name = "driver_license_number")
+    private String licenseNumber;
+
+    @Column(name = "driver_vehicle_type")
+    private String vehicleType;
 }

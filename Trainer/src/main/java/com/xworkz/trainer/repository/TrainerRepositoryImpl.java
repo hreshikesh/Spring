@@ -1,12 +1,13 @@
 package com.xworkz.trainer.repository;
 
 import com.xworkz.trainer.entity.*;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
+@Repository
 public class TrainerRepositoryImpl implements TrainerRepository{
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("driverUnit");
 

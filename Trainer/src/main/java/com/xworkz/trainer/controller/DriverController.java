@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.DriverDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -16,13 +18,15 @@ public class DriverController {
     public DriverController(){
         System.out.println("const drivercontroller....");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("driver")
     public ModelAndView getDriver(@Valid DriverDto driverDto, BindingResult bindingResult, ModelAndView modelAndView) {
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             modelAndView.addObject("errors", errors);
         }
+        trainerService.saveDriver(driverDto);
         modelAndView.setViewName("Driver");
         return modelAndView;
     }

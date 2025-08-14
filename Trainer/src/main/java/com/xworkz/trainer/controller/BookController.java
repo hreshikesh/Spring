@@ -1,6 +1,8 @@
 package com.xworkz.trainer.controller;
 
 import com.xworkz.trainer.dto.BookDto;
+import com.xworkz.trainer.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -16,7 +18,8 @@ public class BookController {
     public BookController() {
         System.out.println("const bookcontroller....");
     }
-
+    @Autowired
+    TrainerService trainerService;
     @RequestMapping("book")
 
     public ModelAndView getBook(@Valid BookDto bookDto , BindingResult bindingResult ,ModelAndView modelAndView) {
@@ -26,7 +29,7 @@ public class BookController {
 
             modelAndView.addObject("errors", bindingResult.getAllErrors());
         }
-
+        trainerService.saveBook(bookDto);
         modelAndView.setViewName("Book");
         return modelAndView;
     }
