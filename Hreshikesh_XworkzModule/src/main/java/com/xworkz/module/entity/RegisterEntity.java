@@ -1,0 +1,39 @@
+package com.xworkz.module.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "users")
+@NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy and password=:passwordBy")
+public class RegisterEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private Long phone;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "password")
+    private String password;
+}
