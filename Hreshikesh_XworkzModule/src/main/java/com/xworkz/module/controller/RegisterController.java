@@ -20,21 +20,22 @@ public class RegisterController {
     @RequestMapping("/register")
     public ModelAndView Form(@Valid RegisterDto registerDto, BindingResult result, ModelAndView modelAndView){
 
+
+
+        System.out.println(registerDto);
+
+        RegisterEntity registerEntity=new RegisterEntity();
+        registerEntity.setName(registerDto.getName());
+        registerEntity.setAge(registerDto.getAge());
+        registerEntity.setEmail(registerDto.getEmail());
+        registerEntity.setAddress(registerDto.getAddress());
+        registerEntity.setGender(registerDto.getGender());
+        registerEntity.setPhone(registerDto.getPhone());
+        registerEntity.setPassword(registerDto.getPassword());
+       boolean status= registerService.save(registerEntity);
         if(result.hasErrors()){
             modelAndView.addObject("errors",result.getAllErrors());
         }
-
-        System.out.println(registerDto);
-        RegisterEntity register=new RegisterEntity();
-        register.setName(registerDto.getName());
-        register.setAge(registerDto.getAge());
-        register.setEmail(registerDto.getEmail());
-        register.setAddress(registerDto.getAddress());
-        register.setGender(registerDto.getGender());
-        register.setPhone(registerDto.getPhone());
-        register.setPassword(registerDto.getPassword());
-
-       boolean status= registerService.save(register);
 
 
 

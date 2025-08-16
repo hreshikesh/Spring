@@ -4,5 +4,5 @@ import com.xworkz.module.entity.RegisterEntity;
 
 public interface RegisterRepository {
     boolean save(RegisterEntity entity);
-    RegisterEntity find(String name,String password);
+    RegisterEntity find(String name);
 }

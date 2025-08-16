@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-@NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy and password=:passwordBy")
+@NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy")
 public class RegisterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -37,7 +37,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     }
 
     @Override
-    public RegisterEntity find(String name, String password) {
+    public RegisterEntity find(String name) {
         EntityManager manager=null;
         EntityTransaction transaction=null;
         RegisterEntity register=new RegisterEntity();
@@ -49,7 +49,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
 
             Query query=manager.createNamedQuery("getSignUpDetails");
             query.setParameter("nameBy",name);
-            query.setParameter("passwordBy",password);
+
 
            register= (RegisterEntity)query.getSingleResult();
 

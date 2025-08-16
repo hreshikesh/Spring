@@ -10,6 +10,7 @@
 
 </head>
 <body class="bg-dark text-light">
+<script src="index.js"></script>
 
 
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
@@ -36,27 +37,27 @@
         <form action="register" class="bg-dark p-4 " method="post">
             <div class="mb-3">
                 <label for="nameId" class="form-label">Name</label>
-                <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name">
+                <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" required>
                 <span id="nameErrorId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="emailId" class="form-label">Email</label>
-                <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email">
+                <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" required>
                 <span id="emailErrorId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="phoneId" class="form-label">Phone No</label>
-                <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone">
+                <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" required>
                 <span class="text-danger" id="phoneErrorId"></span>
             </div>
             <div class="mb-3">
                 <label for="ageId" class="form-label">Age</label>
-                <input type="number" class="form-control" oninput="validateAge()" id="ageId" name="age">
+                <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" required>
                 <span class="text-danger" id="ageErrorId"></span>
             </div>
             <div class="mb-3">
                 <label for="genderId" class="form-label">Gender</label>
-                <select class="form-select" aria-label="Default select example" onchange="validateGender()" name="gender" id="genderId">
+                <select class="form-select" aria-label="Default select example" onchange="validateGender()" name="gender" id="genderId" required>
                     <option selected>Select Gender</option>
                     <option value="m">male</option>
                     <option value="f">Female</option>
@@ -66,17 +67,17 @@
 
             </div>
             <div class="form-floating">
-                <textarea class="form-control" name="address" id="addressId" style="height: 100px"></textarea>
+                <textarea class="form-control" name="address" id="addressId" style="height: 100px" required></textarea>
                 <label for="addressId">Address</label>
             </div>
             <div class="mb-3">
                 <label for="passwordId" class="form-label" >Password</label>
-                <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId">
+                <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
                 <span id="passwordErrorId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="cpasswordId" class="form-label" >Confirm Password</label>
-                <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword">
+                <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
                 <span id="cpasswordErrorId" class="text-danger"></span>
             </div>
 
@@ -103,6 +104,6 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 
-<script src="index.js"></script>
+
 </body>
 </html>

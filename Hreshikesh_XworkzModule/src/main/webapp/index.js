@@ -22,8 +22,9 @@ emailError.innerText="";
 function validatePhone(){
 let userPhone=document.getElementById("phoneId").value;
 let phoneError=document.getElementById("phoneErrorId");
-if(userPhone.length!=10){
-phoneError.innerText="Phone Number length is 10"
+let phonePattern=/^[9876]\d{9}$/
+if(!phonePattern.test(userPhone)){
+phoneError.innerText="PhoneNo should start from 9876 and length 10"
 }else {
 phoneError.innerText=""
 }
