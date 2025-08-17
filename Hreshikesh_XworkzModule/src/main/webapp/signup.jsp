@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Module Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
 </head>
 <body class="bg-dark text-light">
-<script src="index.js"></script>
+
 
 
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
@@ -70,9 +71,14 @@
                 <textarea class="form-control" name="address" id="addressId" style="height: 100px" required></textarea>
                 <label for="addressId">Address</label>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 ">
                 <label for="passwordId" class="form-label" >Password</label>
-                <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
+                <div class="position-relative">
+                    <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
+                    <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
+                        <i class="bi bi-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
                 <span id="passwordErrorId" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -104,6 +110,6 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 
-
+<script src="index.js"></script>
 </body>
 </html>

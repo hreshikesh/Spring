@@ -64,6 +64,15 @@ passwordError.innerText="";
 }
 }
 
+function viewPassword(){
+let password=document.getElementById("passwordId");
+if(password.type==="password"){
+password.type="text";
+}else{
+password.type="password";
+}
+}
+
 function validateConfirmPassword(){
 let userPassword=document.getElementById("passwordId").value;
 let confirmPassword=document.getElementById("cpasswordId").value;
@@ -75,3 +84,5 @@ cpasswordError.innerText="Password doesnt match";
 cpasswordError.innerText="";
 }
 }
+
+
