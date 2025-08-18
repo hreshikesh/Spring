@@ -55,7 +55,7 @@ genderError.innerText="";
 function validatePassword(){
 let userPassword=document.getElementById("passwordId").value;
 let passwordError=document.getElementById("passwordErrorId");
-let passwordPattern=/^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\d){3,}).{3,15}$/;
+let passwordPattern=/^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\d){3,}).{8,15}$/;
 
 if(!passwordPattern.test(userPassword)){
 passwordError.innerText="Must have 1sp,1Cap,3 no";

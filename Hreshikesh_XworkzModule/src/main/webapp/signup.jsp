@@ -20,13 +20,13 @@
             <img src="images/logo.png"
                  alt="xworkz" width="100" height="50">
         </a>
-        <div class="d-grid gap-2 d-md-block">
+        <div class="d-flex justify-contend-end">
             <a class="btn btn-danger rounded-pill m-2" href="index.jsp" role="button">Home</a>
         </div>
     </div>
 </nav>
 <div class="container d-flex justify-content-center mt-4 align-items-center min-vh-100">
-    <div class=" p-5 shadow-lg  mb-5 rounded">
+    <div class=" p-5 shadow-lg w-75 mb-5 rounded">
         <h3 class="fw-bold display-4 text-center text-danger mb-3">Register Form</h3>
         <div class="container">
             <c:if test="${not empty errors}">
@@ -36,57 +36,61 @@
             </c:if>
         </div>
         <form action="register" class="bg-dark p-4 " method="post">
-            <div class="mb-3">
-                <label for="nameId" class="form-label">Name</label>
-                <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" required>
-                <span id="nameErrorId" class="text-danger"></span>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="nameId" class="form-label">Name</label>
+                    <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" required>
+                    <span id="nameErrorId" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label for="emailId" class="form-label">Email</label>
+                    <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" required>
+                    <span id="emailErrorId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="emailId" class="form-label">Email</label>
-                <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" required>
-                <span id="emailErrorId" class="text-danger"></span>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="phoneId" class="form-label">Phone No</label>
+                    <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" required>
+                    <span class="text-danger" id="phoneErrorId"></span>
+                </div>
+                <div class="col-3">
+                    <label for="ageId" class="form-label">Age</label>
+                    <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" required>
+                    <span class="text-danger" id="ageErrorId"></span>
+                </div>
+                <div class="col-3">
+                    <label for="genderId" class="form-label">Gender</label>
+                    <select class="form-select" aria-label="Default select example" onchange="validateGender()" name="gender" id="genderId" required>
+                        <option selected>Select Gender</option>
+                        <option value="m">male</option>
+                        <option value="f">Female</option>
+                        <option value="o">other</option>
+                    </select>
+                    <span class="text-danger" id="genderErrorId"></span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="phoneId" class="form-label">Phone No</label>
-                <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" required>
-                <span class="text-danger" id="phoneErrorId"></span>
-            </div>
-            <div class="mb-3">
-                <label for="ageId" class="form-label">Age</label>
-                <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" required>
-                <span class="text-danger" id="ageErrorId"></span>
-            </div>
-            <div class="mb-3">
-                <label for="genderId" class="form-label">Gender</label>
-                <select class="form-select" aria-label="Default select example" onchange="validateGender()" name="gender" id="genderId" required>
-                    <option selected>Select Gender</option>
-                    <option value="m">male</option>
-                    <option value="f">Female</option>
-                    <option value="o">other</option>
-                </select>
-                <span class="text-danger" id="genderErrorId"></span>
-
-            </div>
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <textarea class="form-control" name="address" id="addressId" style="height: 100px" required></textarea>
                 <label for="addressId">Address</label>
             </div>
-            <div class="mb-3 ">
-                <label for="passwordId" class="form-label" >Password</label>
-                <div class="position-relative">
-                    <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
-                    <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
-                        <i class="bi bi-eye" id="toggleIcon"></i>
-                    </button>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="passwordId" class="form-label">Password</label>
+                    <div class="position-relative">
+                        <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
+                        <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
+                            <i class="bi bi-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                    <span id="passwordErrorId" class="text-danger"></span>
                 </div>
-                <span id="passwordErrorId" class="text-danger"></span>
+                <div class="col">
+                    <label for="cpasswordId" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
+                    <span id="cpasswordErrorId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="cpasswordId" class="form-label" >Confirm Password</label>
-                <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
-                <span id="cpasswordErrorId" class="text-danger"></span>
-            </div>
-
             <div class="mb-3">
                 <button class="btn btn-danger w-100">Submit</button>
             </div>
@@ -102,7 +106,9 @@
                     </c:choose>
                 </c:if>
             </div>
+
         </form>
+
     </div>
 </div>
 
