@@ -2,13 +2,15 @@ package com.xworkz.module.repository;
 
 import com.mysql.cj.x.protobuf.MysqlxExpr;
 import com.xworkz.module.entity.RegisterEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
 @Repository
 public class RegisterRepositoryImpl implements RegisterRepository{
-    EntityManagerFactory factory= Persistence.createEntityManagerFactory("module");
+   @Autowired
+    EntityManagerFactory factory;
     @Override
     public boolean save(RegisterEntity entity) {
         EntityManager manager=null;
