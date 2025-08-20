@@ -1,10 +1,11 @@
 package com.xworkz.module.service;
 
-import com.xworkz.module.entity.RegisterEntity;
+
+import com.xworkz.module.dto.RegisterDto;
 
 public interface RegisterService {
 
-    boolean save(RegisterEntity entity);
+    boolean save(RegisterDto dto);
 
     boolean find(String name,String password);
 }

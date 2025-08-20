@@ -1,8 +1,4 @@
 package com.xworkz.module.configuaration;
-
-import org.hibernate.Hibernate;
-import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionCreator;
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -51,4 +46,7 @@ public class ModuleConfiguaration implements WebMvcConfigurer {
         source.setPassword("hrishi@sql");
         return source;
     }
+
+
+
 }
