@@ -26,45 +26,34 @@
     </div>
 </nav>
 <div class="container d-flex justify-content-center mt-4 align-items-center min-vh-100">
-    <div class=" p-5 shadow-lg  mb-5 rounded">
-        <h3 class="fw-bold display-4 text-center text-danger mb-3">Welcome Back</h3>
-        <form action="signin" class="bg-dark p-4 " method="post">
-            <div class="mb-3">
-                <label for="nameId" class="form-label">UserName</label>
-                <input type="text" class="form-control" id="nameId" name="name">
+    <div class=" p-5 shadow-lg w-75 mb-5 rounded">
+        <h3 class="fw-bold display-5 text-center text-danger mb-3">Verify Email</h3>
 
-            </div>
-            <div class="mb-3 ">
-                <label for="passwordId" class="form-label" >Password</label>
-                <div class="position-relative">
-                    <input type="password" class="form-control"  name="password" id="passwordId" required>
-                    <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
-                        <i class="bi bi-eye" id="toggleIcon"></i>
-                    </button>
-                </div>
-                <div class="mt-2">
-                <p><a class="link-opacity-50 " href="VerifyEmail.jsp">forgot password</a></p>
+        <form action="verify" class="bg-dark p-4 " method="post">
+            <div class="row mb-3">
+                <div class="col-7 mx-auto">
+                <label for="emailId" class="form-label">Email</label>
+                <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" required>
+                <span id="emailErrorId" class="text-danger"></span>
                 </div>
             </div>
-            <div class="mb-3">
-                <button class="btn btn-danger w-100">SignUp</button>
+            <div class="mb-3 text-center">
+                <button class="btn btn-danger w-50 ">Verify</button>
             </div>
             <div>
-                <c:if test="${not empty result}">
-                    <c:if test="${result eq 'false'}">
-                        <p class="text-warning text-center">Invalid Credentials</p>
+                <c:if test="${not empty status}">
+                    <c:if test="${status eq 'fail'}">
+                        <p class="text-center text-warning">Email Not Found</p>
                     </c:if>
                 </c:if>
-
             </div>
         </form>
+
     </div>
 </div>
 <script src="index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
-

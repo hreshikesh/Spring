@@ -11,6 +11,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy")
+@NamedQuery(name="checkEmail",query = "select e from RegisterEntity e where email=:emailBy")
+@NamedQuery(name="updateQuery",query = "update RegisterEntity e set e.password=:passwordBy where email=:emailBy")
+
 public class RegisterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

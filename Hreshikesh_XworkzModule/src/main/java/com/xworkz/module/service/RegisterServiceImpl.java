@@ -4,7 +4,9 @@ import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.entity.RegisterEntity;
 import com.xworkz.module.repository.RegisterRepository;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,7 @@ public class RegisterServiceImpl implements RegisterService {
         registerEntity.setName(registerDto.getName());
         registerEntity.setAge(registerDto.getAge());
         registerEntity.setEmail(registerDto.getEmail());
-        getEmail(registerEntity.getEmail());//email integration
+        getEmail(registerEntity.getEmail(),"Register Successful","Dear User," + "\n\n Your registration for xworkz is sucessfull");//email integration
         registerEntity.setAddress(registerDto.getAddress());
         registerEntity.setGender(registerDto.getGender());
         registerEntity.setPhone(registerDto.getPhone());
@@ -35,7 +37,60 @@ public class RegisterServiceImpl implements RegisterService {
         return registerRepository.save(registerEntity);
     }
 
-    private void getEmail(String email){
+
+    @Override
+    public RegisterDto find(String name, String password) {
+        RegisterDto registerDto=new RegisterDto();
+        RegisterEntity register = registerRepository.find(name);
+        String retrievedPassword = register.getPassword();
+        if(register.getName()!=null && passwordEncoder.matches(password, retrievedPassword)){
+            BeanUtils.copyProperties(register,registerDto);
+            registerDto.setPassword(register.getPassword());
+            return registerDto;
+        }
+        return null;
+    }
+
+    String fetchedEmail="";
+    @Override
+    public RegisterDto findByEmail(String email) {
+        RegisterEntity register=registerRepository.findByEmail(email);
+        System.out.println(register);
+        RegisterDto registerDto=new RegisterDto();
+        BeanUtils.copyProperties(register,registerDto);
+        System.out.println(registerDto);
+        fetchedEmail= registerDto.getEmail();
+       return registerDto;
+    }
+
+    @Override
+    public boolean updatePassword(String password) {
+       boolean update=registerRepository.updatePassword(fetchedEmail,passwordEncoder.encode(password));
+       if(update){
+           getEmail(fetchedEmail,"Password Changed","Dear User"+"\n\nPassword For your account was changed");
+       }
+        return update;
+    }
+
+    @Override
+    public RegisterDto updateProfile(RegisterDto dto) {
+        RegisterEntity register=new RegisterEntity();
+        register.setName(dto.getName());
+        register.setEmail(dto.getEmail());
+        register.setPhone(dto.getPhone());
+        register.setAge(dto.getAge());
+        register.setAddress(dto.getAddress());
+        register.setPassword(passwordEncoder.encode(dto.getPassword()));
+        RegisterDto dto1=new RegisterDto();
+
+        register= registerRepository.updateProfile(register);
+        BeanUtils.copyProperties(register,dto1);
+        return dto1;
+
+    }
+
+
+    private void getEmail(String email,String subject,String body){
 
 
         final String username = "ailhreshikesh@gmail.com";
@@ -62,9 +117,8 @@ public class RegisterServiceImpl implements RegisterService {
                     Message.RecipientType.TO,
                     InternetAddress.parse(email)
             );
-            message.setSubject("Register Successful");
-            message.setText("Dear User,"
-                    + "\n\n Your registration for xworkz is sucessfull");
+            message.setSubject(subject);
+            message.setText(body);
 
             Transport.send(message);
 
@@ -77,12 +131,5 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
 
-    @Override
-    public boolean find(String name, String password) {
-        RegisterEntity register = registerRepository.find(name);
-        String retrievedPassword = register.getPassword();
-        if (name.equals(register.getName()) && passwordEncoder.matches(password,retrievedPassword)) {
-            return true;
-        } else return false;
-    }
+
 }

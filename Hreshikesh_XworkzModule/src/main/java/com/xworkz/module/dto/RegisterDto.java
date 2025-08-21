@@ -28,7 +28,7 @@ public class RegisterDto {
     private String gender;
     @NotNull(message = "Address should be empty")
     private String address;
-    @NotNull
+    @NotNull(message = "Password should not be empty")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\\d){3,}).{3,15}$", message = "password should match")
     private String password;
 }

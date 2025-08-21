@@ -41,16 +41,17 @@ ageError.innerText="";
 }
 }
 
-function validateGender(){
-let userGender=document.getElementById("genderId").value;
-let genderError=document.getElementById("genderErrorId");
-if(userGender==="Select Gender"){
-genderError.innerText="Please select Gender";
-}else{
-genderError.innerText="";
+function validateGender() {
+  let userGender = document.getElementById("genderId").value;
+  let genderError = document.getElementById("genderErrorId");
+  if (userGender === "") {
+    genderError.innerText = "Please select Gender";
+    return false;
+  } else {
+    genderError.innerText = "";
+    return true;
+  }
 }
-}
-
 
 function validatePassword(){
 let userPassword=document.getElementById("passwordId").value;
@@ -58,7 +59,8 @@ let passwordError=document.getElementById("passwordErrorId");
 let passwordPattern=/^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\d){3,}).{8,15}$/;
 
 if(!passwordPattern.test(userPassword)){
-passwordError.innerText="Must have 1sp,1Cap,3 no";
+passwordError.innerText="Must have 1sp,3no,1cap Must be 8-15 char";
+
 }else{
 passwordError.innerText="";
 }
@@ -66,10 +68,15 @@ passwordError.innerText="";
 
 function viewPassword(){
 let password=document.getElementById("passwordId");
+let icon=document.getElementById("toggleIcon");
 if(password.type==="password"){
 password.type="text";
+icon.classList.remove("bi-eye")
+icon.classList.add("bi-eye-slash")
 }else{
 password.type="password";
+icon.classList.remove("bi-eye-slash")
+icon.classList.add("bi-eye")
 }
 }
 
