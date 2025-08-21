@@ -1,6 +1,7 @@
 package com.xworkz.module.service;
 
 
+import com.xworkz.module.dto.ContactDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.entity.RegisterEntity;
 
@@ -14,5 +15,5 @@ public interface RegisterService {
 
     boolean updatePassword(String password);
 
-    RegisterDto updateProfile(RegisterDto dto);
+    ContactDto updateProfile(ContactDto dto);
 }

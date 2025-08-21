@@ -18,14 +18,13 @@
                  alt="xworkz" width="100" height="50">
         </a>
         <div class="d-flex justify-contend-end">
-            <a class="btn btn-danger rounded-pill m-2" href="home?name=${dto.name}&email=${dto.email}" role="button">Home</a>
+            <a class="btn btn-danger rounded-pill m-2" href="home" role="button">Home</a>
         </div>
     </div>
 </nav>
 <div class="container d-flex justify-content-center mt-4 align-items-center min-vh-100">
     <div class=" p-5 shadow-lg w-75 mb-5 rounded">
         <h3 class="fw-bold display-4 text-center text-danger mb-3">Update Profile</h3>
-
         <c:if test="${not empty errors}">
             <div  class="alert alert-secondary" role="alert">
                 <c:forEach var="error" items="${errors}" varStatus="loop">
@@ -33,8 +32,7 @@
                 </c:forEach>
             </div>
         </c:if>
-
-        <form action="updateProfile" class="bg-dark p-4 " method="post">
+        <form action="updateprofile" class="bg-dark p-4 " method="post">
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="nameId" class="form-label">Name</label>
@@ -60,7 +58,7 @@
                 </div>
                 <div class="col-3">
                     <label for="genderId" class="form-label">Gender</label>
-                    <select id="genderId" class="form-select"  disabled>
+                    <select id="genderId"  class="form-select" disabled>
                         <option value="${dto.gender}" >${dto.gender}</option>
                     </select>
                     <input type="hidden" name="gender" value="${dto.gender}">
@@ -71,23 +69,7 @@
                 </textarea>
                 <label for="addressId">Address</label>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="passwordId" class="form-label">Password</label>
-                    <div class="position-relative">
-                        <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
-                        <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
-                            <i class="bi bi-eye" id="toggleIcon"></i>
-                        </button>
-                    </div>
-                    <span id="passwordErrorId" class="text-danger"></span>
-                </div>
-                <div class="col">
-                    <label for="cpasswordId" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
-                    <span id="cpasswordErrorId" class="text-danger"></span>
-                </div>
-            </div>
+
             <div class="mb-3">
                 <button class="btn btn-danger w-100">Update</button>
             </div>
@@ -103,16 +85,12 @@
                     </c:choose>
                 </c:if>
             </div>
-
         </form>
-
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
-
 <script src="index.js"></script>
 </body>
 </html>

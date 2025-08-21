@@ -155,19 +155,15 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             register1.setPhone(register.getPhone());
             register1.setAge(register.getAge());
             register1.setAddress(register.getAddress());
-            register1.setPassword(register.getPassword());
+
 
             entityManager.merge(register1);
 
             transaction.commit();
+
             transaction.begin();
-
             register2=findByEmail(register.getEmail());
-            System.out.println(register2);
-
-
             transaction.commit();
-
         }catch (Exception e){
             if(transaction.isActive()){
                 transaction.rollback();

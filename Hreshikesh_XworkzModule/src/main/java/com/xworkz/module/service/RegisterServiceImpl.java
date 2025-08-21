@@ -1,12 +1,12 @@
 package com.xworkz.module.service;
 
+import com.xworkz.module.dto.ContactDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.entity.RegisterEntity;
 import com.xworkz.module.repository.RegisterRepository;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -73,19 +73,18 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public RegisterDto updateProfile(RegisterDto dto) {
+    public ContactDto updateProfile(ContactDto dto) {
         RegisterEntity register=new RegisterEntity();
         register.setName(dto.getName());
         register.setEmail(dto.getEmail());
         register.setPhone(dto.getPhone());
         register.setAge(dto.getAge());
         register.setAddress(dto.getAddress());
-        register.setPassword(passwordEncoder.encode(dto.getPassword()));
-        RegisterDto dto1=new RegisterDto();
 
-        register= registerRepository.updateProfile(register);
-        BeanUtils.copyProperties(register,dto1);
-        return dto1;
+        RegisterEntity register1=registerRepository.updateProfile(register);
+        ContactDto contactDto=new ContactDto();
+        BeanUtils.copyProperties(register1,contactDto);
+        return contactDto;
 
     }
 

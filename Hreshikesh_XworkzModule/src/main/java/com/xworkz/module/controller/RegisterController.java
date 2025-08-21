@@ -1,16 +1,17 @@
 package com.xworkz.module.controller;
 
+import com.xworkz.module.dto.ContactDto;
 import com.xworkz.module.dto.PasswordDto;
 import com.xworkz.module.dto.RegisterDto;
-import com.xworkz.module.entity.RegisterEntity;
 import com.xworkz.module.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -35,11 +36,11 @@ public class RegisterController {
 
 
     @RequestMapping("signin")
-    public ModelAndView signUp(String name, String password, RegisterDto dto, ModelAndView modelAndView) {
+    public ModelAndView signUp(String name, String password, ModelAndView modelAndView, HttpSession session) {
         RegisterDto dto1 = registerService.find(name, password);
         if (dto1 != null) {
-            modelAndView.addObject("name", dto1.getName());
-            modelAndView.addObject("email", dto1.getEmail());
+            session.setAttribute("loginName",dto1.getName());
+            session.setAttribute("loginEmail",dto1.getEmail());
             modelAndView.setViewName("Home");
         } else {
             modelAndView.addObject("result", "false");
@@ -50,13 +51,14 @@ public class RegisterController {
     }
 
     @RequestMapping("update")
-    public ModelAndView showUpdate(@RequestParam String email, ModelAndView view) {
-        RegisterDto registerDto = registerService.findByEmail(email);
+    public ModelAndView showUpdate(ModelAndView view,HttpSession session) {
+        String sessionEmail=(String)session.getAttribute("loginEmail");
+        RegisterDto registerDto = registerService.findByEmail(sessionEmail);
         System.out.println(registerDto);
         if (registerDto != null) {
             view.addObject("dto", registerDto);
         }
-        view.setViewName("Update");
+        view.setViewName("UpdateForm");
         return view;
 
     }
@@ -88,39 +90,33 @@ public class RegisterController {
     }
 
 
-    @RequestMapping("updateProfile")
-    public ModelAndView updateProfile(@Valid RegisterDto dto, BindingResult result, ModelAndView view) {
+    @RequestMapping("/updateprofile")
+    public String updateProfile(@Valid ContactDto dto, BindingResult result, Model view, HttpSession session) {
 
         if (result.hasErrors()) {
-            view.addObject("errors", result.getAllErrors());
-            view.setViewName("Update");
+            view.addAttribute("errors", result.getAllErrors());
+
         } else {
-            RegisterDto dto1 = registerService.updateProfile(dto);
-            view.setViewName("Update");
-            if (dto1 == null) {
-                view.addObject("status", "error");
-                view.addObject("dto", dto1);
-
+            ContactDto contactDto= registerService.updateProfile(dto);
+            if (contactDto==null) {
+                view.addAttribute("status", "error");
+                view.addAttribute("dto", dto);
             } else {
+                session.setAttribute("loginName",contactDto.getName());
+                session.setAttribute("loginEmail",contactDto.getEmail());
+                view.addAttribute("dto",contactDto);
+                view.addAttribute("status", "done");
 
-                view.addObject("status", "done");
-                view.addObject("dto", dto1);
-                view.addObject("name", dto.getName());
             }
         }
-        return view;
-
+        return "UpdateForm";
     }
 
     @RequestMapping("home")
-    public ModelAndView getHomePage(String name, String email, ModelAndView modelAndView) {
-        modelAndView.addObject("name",name);
-        modelAndView.addObject("email",email);
+    public ModelAndView getHomePage( ModelAndView modelAndView) {
         modelAndView.setViewName("Home");
         return modelAndView;
     }
-
-
 }
 
 

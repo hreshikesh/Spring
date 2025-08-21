@@ -26,7 +26,6 @@ public class ModuleConfiguaration implements WebMvcConfigurer {
         registry.jsp("/",".jsp");
     }
 
-
     @Bean
     public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(){
 

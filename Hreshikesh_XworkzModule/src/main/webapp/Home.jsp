@@ -22,13 +22,13 @@
         </a>
         <div class="d-flex justify-content-end align-items-center">
             <a class="m-2" href="index.jsp" role="button"><i class="bi bi-box-arrow-left text-danger h3"></i></a>
-            <a class="btn btn-danger rounded-pill m-2" href="update?email=${email}" role="button">Update</a>
+            <a class="btn btn-danger rounded-pill m-2" href="update" role="button">Update</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <p class="text-danger fs-3">Welcome ${name} to X-Workz</p>
+    <p class="text-danger fs-3">Welcome ${sessionScope.loginName} to X-Workz</p>
 </div>
 
 
