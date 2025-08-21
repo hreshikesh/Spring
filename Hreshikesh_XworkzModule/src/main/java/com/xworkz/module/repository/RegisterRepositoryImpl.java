@@ -14,14 +14,15 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     public boolean save(RegisterEntity entity) {
         EntityManager manager=null;
         EntityTransaction transaction=null;
-
         try {
             manager= factory.createEntityManager();
             transaction=manager.getTransaction();
 
             transaction.begin();
-
+            if(entity.getId()==null){
             manager.persist(entity);
+            }else{manager.merge(entity);
+            }
 
             transaction.commit();
             return true;
@@ -47,15 +48,13 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             manager= factory.createEntityManager();
             transaction=manager.getTransaction();
             transaction.begin();
-
-            Query query=manager.createNamedQuery("getSignUpDetails");
-            query.setParameter("nameBy",name);
-
-
-           register= (RegisterEntity)query.getSingleResult();
-
-
-
+            try {
+                Query query = manager.createNamedQuery("getSignUpDetails");
+                query.setParameter("nameBy", name);
+                register= (RegisterEntity)query.getSingleResult();
+            }catch (NoResultException e){
+                return null;
+            }
 
 
             transaction.commit();
@@ -114,21 +113,25 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             transaction.begin();
 
 
-            Query query=entityManager.createNamedQuery("updateQuery");
-            query.setParameter("passwordBy",password);
-            query.setParameter("emailBy",email);
-
-            query.executeUpdate();
-
-
+//            Query query=entityManager.createNamedQuery("updateQuery");
+//            query.setParameter("passwordBy",password);
+//            query.setParameter("emailBy",email);
+//            int no=query.executeUpdate();
+//            System.out.println(no);
 
 
 
+
+
+            register=findByEmail(email);
+            register.setPassword(password);
+            register.setLoginAttempt(0);
+            register.setIsLocked(false);
+
+            entityManager.merge(register);
             transaction.commit();
 
             return true;
-
-
         }catch (Exception e){
             if(transaction.isActive()){
                 transaction.rollback();

@@ -61,6 +61,7 @@
                     <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
                     <span id="cpasswordErrorId" class="text-danger"></span>
                 </div>
+                <input type="hidden" name="email" value="${email}">
             </div>
             <div class="mb-3 text-center">
                 <button class="btn btn-danger w-50 ">Submit</button>

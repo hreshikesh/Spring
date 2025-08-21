@@ -42,17 +42,21 @@
                         <i class="bi bi-eye" id="toggleIcon"></i>
                     </button>
                 </div>
-                <div class="mt-2">
-                <p><a class="link-opacity-50 " href="VerifyEmail.jsp">forgot password</a></p>
-                </div>
             </div>
             <div class="mb-3">
                 <button class="btn btn-danger w-100">SignUp</button>
             </div>
             <div>
                 <c:if test="${not empty result}">
+
                     <c:if test="${result eq 'false'}">
                         <p class="text-warning text-center">Invalid Credentials</p>
+                    </c:if>
+                    <c:if test="${result eq 'fail'}">
+                        <p class="text-warning text-center">Your Account has Been Blocked</p>
+                        <div class="mt-2 ">
+                            <p class="text-center"><a class="link-opacity-50 " href="VerifyEmail.jsp">forgot password</a></p>
+                        </div>
                     </c:if>
                 </c:if>
 

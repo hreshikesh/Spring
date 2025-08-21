@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -38,13 +37,17 @@ public class RegisterController {
     @RequestMapping("signin")
     public ModelAndView signUp(String name, String password, ModelAndView modelAndView, HttpSession session) {
         RegisterDto dto1 = registerService.find(name, password);
-        if (dto1 != null) {
+        if (dto1 == null) {
+            modelAndView.addObject("result", "false");
+            modelAndView.setViewName("signin");
+
+        } else if(dto1.getName().equals("Locked")){
+            modelAndView.addObject("result", "fail");
+            modelAndView.setViewName("signin");
+        }else{
             session.setAttribute("loginName",dto1.getName());
             session.setAttribute("loginEmail",dto1.getEmail());
             modelAndView.setViewName("Home");
-        } else {
-            modelAndView.addObject("result", "false");
-            modelAndView.setViewName("signin");
         }
         return modelAndView;
 
@@ -68,6 +71,7 @@ public class RegisterController {
         RegisterDto registerDto = registerService.findByEmail(email);
         if (registerDto != null) {
             modelAndView.setViewName("ForgotPassword");
+            modelAndView.addObject("email",email);
         } else {
             modelAndView.addObject("status", "fail");
             modelAndView.setViewName("VerifyEmail");
@@ -82,9 +86,12 @@ public class RegisterController {
             view.addObject("errors", result.getAllErrors());
             view.setViewName("ForgotPassword");
         } else {
+            RegisterDto registerDto=registerService.findByEmail(passwordDto.getEmail());
             boolean updateStatus = registerService.updatePassword(passwordDto.getPassword());
             view.addObject("status", updateStatus);
             view.setViewName("ForgotPassword");
+
+
         }
         return view;
     }

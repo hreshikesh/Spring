@@ -41,16 +41,37 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public RegisterDto find(String name, String password) {
         RegisterDto registerDto=new RegisterDto();
-        RegisterEntity register = registerRepository.find(name);
-        String retrievedPassword = register.getPassword();
-        if(register.getName()!=null && passwordEncoder.matches(password, retrievedPassword)){
-            BeanUtils.copyProperties(register,registerDto);
-            registerDto.setPassword(register.getPassword());
-            return registerDto;
-        }
-        return null;
-    }
 
+        RegisterEntity entity = registerRepository.find(name);
+        if(entity==null){
+            return null;
+        }
+        else {
+            if (entity.getIsLocked()) {
+                RegisterDto dto = new RegisterDto();
+                dto.setName("Locked");
+                return dto;
+            }
+
+            else {
+                if (passwordEncoder.matches(password, entity.getPassword())) {
+                    BeanUtils.copyProperties(entity, registerDto);
+                    entity.setLoginAttempt(0);
+                    entity.setIsLocked(false);
+                    return registerDto;
+                } else {
+                    int trails = entity.getLoginAttempt() + 1;
+                    entity.setLoginAttempt(trails);
+                    if (entity.getLoginAttempt() >= 3) {
+                        entity.setIsLocked(true);
+                    }
+
+                }
+            }
+            registerRepository.save(entity);
+            return null;
+        }
+    }
     String fetchedEmail="";
     @Override
     public RegisterDto findByEmail(String email) {
@@ -62,13 +83,12 @@ public class RegisterServiceImpl implements RegisterService {
         fetchedEmail= registerDto.getEmail();
        return registerDto;
     }
-
     @Override
     public boolean updatePassword(String password) {
        boolean update=registerRepository.updatePassword(fetchedEmail,passwordEncoder.encode(password));
-       if(update){
+
            getEmail(fetchedEmail,"Password Changed","Dear User"+"\n\nPassword For your account was changed");
-       }
+
         return update;
     }
 

@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Table(name = "users")
 @NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy")
 @NamedQuery(name="checkEmail",query = "select e from RegisterEntity e where email=:emailBy")
-@NamedQuery(name="updateQuery",query = "update RegisterEntity e set e.password=:passwordBy where email=:emailBy")
 
 public class RegisterEntity {
     @Id
@@ -39,4 +38,11 @@ public class RegisterEntity {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name="login_attempt")
+    private int loginAttempt=0;
+
+    @Column(name="is_locked")
+    private Boolean isLocked=false;
+
 }
