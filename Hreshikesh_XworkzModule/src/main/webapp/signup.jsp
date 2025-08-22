@@ -41,46 +41,46 @@
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="nameId" class="form-label">Name</label>
-                    <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" required>
+                    <input type="text"  oninput="validateName()"  class="form-control" id="nameId" name="name" value="${dto.name}" required minlength="3" maxlength="10" >
                     <span id="nameErrorId" class="text-danger"></span>
                 </div>
                 <div class="col">
                     <label for="emailId" class="form-label">Email</label>
-                    <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" required>
+                    <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" value="${dto.email}" required>
                     <span id="emailErrorId" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="phoneId" class="form-label">Phone No</label>
-                    <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" required>
+                    <input type="text"  class="form-control" oninput="validatePhone()"  maxlength="10" id="phoneId" name="phone" value="${dto.phone}" required >
                     <span class="text-danger" id="phoneErrorId"></span>
                 </div>
                 <div class="col-3">
                     <label for="ageId" class="form-label">Age</label>
-                    <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" required>
+                    <input type="text" class="form-control"  oninput="validateAge()" maxlength="2" id="ageId" name="age" value="${dto.age}" required>
                     <span class="text-danger" id="ageErrorId"></span>
                 </div>
                 <div class="col-3">
                     <label for="genderId" class="form-label">Gender</label>
                     <select class="form-select" name="gender" id="genderId" required>
                         <option value="" selected disabled>Select Gender</option>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
-                        <option value="o">Other</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
                     <span class="text-danger" id="genderErrorId"></span>
                 </div>
             </div>
-            <div class="form-floating mb-3">
-                <textarea class="form-control" name="address" id="addressId" style="height: 100px" required></textarea>
-                <label for="addressId">Address</label>
+            <div class="mb-3">
+                <label for="addressId" class="form-label">Address</label>
+                <input type="text" class="form-control" name="address" value="${dto.address}" id="addressId" required style="height: 100px;">
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label for="passwordId" class="form-label">Password</label>
                     <div class="position-relative">
-                        <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required>
+                        <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" minlength="8" maxlength="15" required>
                         <button type="button" class="position-absolute top-50 end-0 translate-middle-y text-danger  border-0 bg-transparent" onclick="viewPassword()">
                             <i class="bi bi-eye" id="toggleIcon"></i>
                         </button>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col">
                     <label for="cpasswordId" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" name="cpassword" required>
+                    <input type="password" class="form-control" oninput="validateConfirmPassword()" id="cpasswordId" minlength="8" maxlength="15" name="cpassword" required>
                     <span id="cpasswordErrorId" class="text-danger"></span>
                 </div>
             </div>
@@ -114,10 +114,10 @@
     </div>
 </div>
 
+<script src="index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 
-<script src="index.js"></script>
 </body>
 </html>

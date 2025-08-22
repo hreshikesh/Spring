@@ -1,12 +1,21 @@
 function validateName(){
 let userName=document.getElementById("nameId").value;
 let nameError=document.getElementById("nameErrorId");
-if(userName.length<3 || userName.length>10){
-nameError.innerText="Name length between 3 and 10";
+let pattern=/^[A-Za-z ]+$/
+if(userName.length<3 || userName.length>10 && pattern.test(userName)){
+nameError.innerText="Name length between 3 and 10 and name should not contain numbers";
 }else{
-nameError.textContent="";
+nameError.innerText="";
 }
 }
+//
+//function checkValue(event){
+//let char=event.key;
+//let pattern=/^[A-Za-z ]$/
+//if(!pattern.test(char)){
+//event.preventDefault();
+//}
+//}
 
 function validateEmail(){
 let userEmail=document.getElementById("emailId").value;
@@ -22,7 +31,7 @@ emailError.innerText="";
 function validatePhone(){
 let userPhone=document.getElementById("phoneId").value;
 let phoneError=document.getElementById("phoneErrorId");
-let phonePattern=/^[9876]\d{9}$/
+let phonePattern=/^[6-9]\d{9}$/
 if(!phonePattern.test(userPhone)){
 phoneError.innerText="PhoneNo should start from 9876 and length 10"
 }else {

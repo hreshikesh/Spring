@@ -25,6 +25,7 @@ public class RegisterController {
 
         if (result.hasErrors()) {
             modelAndView.addObject("errors", result.getAllErrors());
+            modelAndView.addObject("dto",registerDto);
         } else {
             boolean status = registerService.save(registerDto);
             modelAndView.addObject("status", status);
