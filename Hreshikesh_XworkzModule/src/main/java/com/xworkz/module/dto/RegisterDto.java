@@ -18,7 +18,7 @@ public class RegisterDto {
     @Pattern(regexp = "^[A-Za-z0-9]+@gmail\\.com$", message = "Email not Matching")
     private String email;
     @NotNull(message = "Phone number is required")
-    @Min(value = 6000000000L, message = "Number should start from 6")
+    @Min(value = 6000000000L, message = "Number should start from 6|7|8|9")
     @Max(value = 9999999999L, message = "Phone number must be 10 digits")
     private Long phone;
     @NotNull

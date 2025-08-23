@@ -15,5 +15,5 @@ public interface RegisterService {
 
     boolean updatePassword(String password);
 
-    ContactDto updateProfile(ContactDto dto);
+    boolean updateProfile(ContactDto dto);
 }

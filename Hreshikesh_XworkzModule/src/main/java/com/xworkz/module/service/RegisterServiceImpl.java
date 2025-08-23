@@ -47,28 +47,22 @@ public class RegisterServiceImpl implements RegisterService {
             return null;
         }
         else {
-            if (entity.getIsLocked()) {
+            if (entity.getLoginAttempt()>=3) {
                 RegisterDto dto = new RegisterDto();
                 dto.setName("Locked");
                 return dto;
             }
-
             else {
                 if (passwordEncoder.matches(password, entity.getPassword())) {
                     BeanUtils.copyProperties(entity, registerDto);
                     entity.setLoginAttempt(0);
-                    entity.setIsLocked(false);
                     return registerDto;
                 } else {
                     int trails = entity.getLoginAttempt() + 1;
                     entity.setLoginAttempt(trails);
-                    if (entity.getLoginAttempt() >= 3) {
-                        entity.setIsLocked(true);
-                    }
-
                 }
             }
-            registerRepository.save(entity);
+            registerRepository.updateTable(entity);
             return null;
         }
     }
@@ -93,7 +87,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public ContactDto updateProfile(ContactDto dto) {
+    public boolean updateProfile(ContactDto dto) {
         RegisterEntity register=new RegisterEntity();
         register.setName(dto.getName());
         register.setEmail(dto.getEmail());
@@ -101,10 +95,8 @@ public class RegisterServiceImpl implements RegisterService {
         register.setAge(dto.getAge());
         register.setAddress(dto.getAddress());
 
-        RegisterEntity register1=registerRepository.updateProfile(register);
-        ContactDto contactDto=new ContactDto();
-        BeanUtils.copyProperties(register1,contactDto);
-        return contactDto;
+        return registerRepository.updateProfile(register);
+
 
     }
 

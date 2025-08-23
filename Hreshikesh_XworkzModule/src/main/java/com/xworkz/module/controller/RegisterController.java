@@ -99,26 +99,27 @@ public class RegisterController {
 
 
     @RequestMapping("/updateprofile")
-    public String updateProfile(@Valid ContactDto dto, BindingResult result, Model view, HttpSession session) {
-
+    public ModelAndView updateProfile(@Valid ContactDto dto, BindingResult result, ModelAndView view) {
         if (result.hasErrors()) {
-            view.addAttribute("errors", result.getAllErrors());
-
+            view.addObject("errors", result.getAllErrors());
+            view.setViewName("UpdateForm");
         } else {
-            ContactDto contactDto= registerService.updateProfile(dto);
-            if (contactDto==null) {
-                view.addAttribute("status", "error");
-                view.addAttribute("dto", dto);
+            boolean status = registerService.updateProfile(dto);
+            if (!status) {
+                view.addObject("status", "error");
+                view.addObject("dto", dto);
+                view.setViewName("UpdateForm");
             } else {
-                session.setAttribute("loginName",contactDto.getName());
-                session.setAttribute("loginEmail",contactDto.getEmail());
-                view.addAttribute("dto",contactDto);
-                view.addAttribute("status", "done");
-
+                view.addObject("status", "done");
+                RegisterDto dto1=registerService.findByEmail(dto.getEmail());
+                view.addObject("dto", dto1);
+                view.setViewName("UpdateForm");
             }
         }
-        return "UpdateForm";
+
+        return view;
     }
+
 
     @RequestMapping("home")
     public ModelAndView getHomePage( ModelAndView modelAndView) {

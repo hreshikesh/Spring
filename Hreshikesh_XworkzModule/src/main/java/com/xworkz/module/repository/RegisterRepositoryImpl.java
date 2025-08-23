@@ -19,10 +19,8 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             transaction=manager.getTransaction();
 
             transaction.begin();
-            if(entity.getId()==null){
+
             manager.persist(entity);
-            }else{manager.merge(entity);
-            }
 
             transaction.commit();
             return true;
@@ -113,20 +111,10 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             transaction.begin();
 
 
-//            Query query=entityManager.createNamedQuery("updateQuery");
-//            query.setParameter("passwordBy",password);
-//            query.setParameter("emailBy",email);
-//            int no=query.executeUpdate();
-//            System.out.println(no);
-
-
-
-
 
             register=findByEmail(email);
             register.setPassword(password);
             register.setLoginAttempt(0);
-            register.setIsLocked(false);
 
             entityManager.merge(register);
             transaction.commit();
@@ -144,15 +132,15 @@ public class RegisterRepositoryImpl implements RegisterRepository{
     }
 
     @Override
-    public RegisterEntity updateProfile(RegisterEntity register) {
+    public boolean updateProfile(RegisterEntity register) {
         EntityManager entityManager=null;
         EntityTransaction transaction=null;
-        RegisterEntity register2=new RegisterEntity();
+        RegisterEntity register1=new RegisterEntity();
         try{
             entityManager=factory.createEntityManager();
             transaction= entityManager.getTransaction();
             transaction.begin();
-            RegisterEntity register1=findByEmail(register.getEmail());
+            register1=findByEmail(register.getEmail());
             register1.setName(register.getName());
             register1.setEmail(register.getEmail());
             register1.setPhone(register.getPhone());
@@ -164,9 +152,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
 
             transaction.commit();
 
-            transaction.begin();
-            register2=findByEmail(register.getEmail());
-            transaction.commit();
+            return true;
         }catch (Exception e){
             if(transaction.isActive()){
                 transaction.rollback();
@@ -174,6 +160,31 @@ public class RegisterRepositoryImpl implements RegisterRepository{
         }finally {
             entityManager.close();
         }
-        return register2;
+        return false;
+    }
+
+    @Override
+    public void updateTable(RegisterEntity entity) {
+        EntityManager manager=null;
+        EntityTransaction transaction=null;
+        try {
+            manager= factory.createEntityManager();
+            transaction=manager.getTransaction();
+            transaction.begin();
+
+            manager.merge(entity);
+
+            transaction.commit();
+        }catch (Exception e){
+            if(transaction!=null && transaction.isActive()){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            manager.close();
+        }
+
     }
 }
+
+

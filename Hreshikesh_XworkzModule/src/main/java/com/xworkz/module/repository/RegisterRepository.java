@@ -11,5 +11,7 @@ public interface RegisterRepository {
 
     boolean updatePassword(String email,String password);
 
-    RegisterEntity updateProfile(RegisterEntity register);
+    boolean updateProfile(RegisterEntity register);
+
+    void updateTable(RegisterEntity entity);
 }
