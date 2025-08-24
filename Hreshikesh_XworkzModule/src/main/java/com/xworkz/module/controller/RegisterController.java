@@ -1,12 +1,11 @@
 package com.xworkz.module.controller;
 
-import com.xworkz.module.dto.ContactDto;
+import com.xworkz.module.dto.UpdateDto;
 import com.xworkz.module.dto.PasswordDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,11 +40,16 @@ public class RegisterController {
         if (dto1 == null) {
             modelAndView.addObject("result", "false");
             modelAndView.setViewName("signin");
-
         } else if(dto1.getName().equals("Locked")){
             modelAndView.addObject("result", "fail");
             modelAndView.setViewName("signin");
-        }else{
+        } else if (dto1.getName().equals("TimeOut")) {
+            modelAndView.addObject("result", "reset");
+            modelAndView.setViewName("signin");
+        } else if (dto1.getName().equals("notfound")) {
+            modelAndView.addObject("result", "notfound");
+            modelAndView.setViewName("signin");
+        } else{
             session.setAttribute("loginName",dto1.getName());
             session.setAttribute("loginEmail",dto1.getEmail());
             modelAndView.setViewName("Home");
@@ -99,7 +103,7 @@ public class RegisterController {
 
 
     @RequestMapping("/updateprofile")
-    public ModelAndView updateProfile(@Valid ContactDto dto, BindingResult result, ModelAndView view) {
+    public ModelAndView updateProfile(@Valid UpdateDto dto, BindingResult result, ModelAndView view, HttpSession session) {
         if (result.hasErrors()) {
             view.addObject("errors", result.getAllErrors());
             view.setViewName("UpdateForm");
@@ -113,13 +117,12 @@ public class RegisterController {
                 view.addObject("status", "done");
                 RegisterDto dto1=registerService.findByEmail(dto.getEmail());
                 view.addObject("dto", dto1);
+                session.setAttribute("loginName",dto1.getName());
                 view.setViewName("UpdateForm");
             }
         }
-
         return view;
     }
-
 
     @RequestMapping("home")
     public ModelAndView getHomePage( ModelAndView modelAndView) {

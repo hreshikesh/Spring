@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactDto {
+public class UpdateDto {
     @NotNull
     @Size(min = 3, max = 10, message = "Name Should Be Between 3 and 10")
     private String name;

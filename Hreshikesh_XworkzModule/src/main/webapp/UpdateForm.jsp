@@ -28,7 +28,7 @@
         <c:if test="${not empty errors}">
             <div  class="alert alert-secondary" role="alert">
                 <c:forEach var="error" items="${errors}" varStatus="loop">
-                    <p>${error.defaultMessage}</p>
+                    <p class="text-center text-warning">${error.defaultMessage}</p>
                 </c:forEach>
             </div>
         </c:if>
@@ -36,7 +36,7 @@
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="nameId" class="form-label">Name</label>
-                    <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" value="${dto.name}" required>
+                    <input type="text" oninput="validateName()" class="form-control" id="nameId" name="name" value="${dto.name}" required minlength="3" maxlength="10">
                     <span id="nameErrorId" class="text-danger"></span>
                 </div>
                 <div class="col">
@@ -48,12 +48,12 @@
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="phoneId" class="form-label">Phone No</label>
-                    <input type="number" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" value="${dto.phone}" required>
+                    <input type="text" class="form-control" oninput="validatePhone()" id="phoneId" name="phone" value="${dto.phone}" required maxlength="10">
                     <span class="text-danger" id="phoneErrorId"></span>
                 </div>
                 <div class="col-3">
                     <label for="ageId" class="form-label">Age</label>
-                    <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" value="${dto.age}" required>
+                    <input type="text" class="form-control" oninput="validateAge()" id="ageId" name="age" value="${dto.age}" required maxlength="2">
                     <span class="text-danger" id="ageErrorId"></span>
                 </div>
                 <div class="col-3">

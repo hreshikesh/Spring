@@ -52,9 +52,15 @@
                     <c:if test="${result eq 'false'}">
                         <p class="text-warning text-center">Invalid Credentials</p>
                     </c:if>
+                    <c:if test="${result eq 'notfound'}">
+                        <p class="text-warning text-center">Invalid UserName</p>
+                    </c:if>
                     <c:if test="${result eq 'fail'}">
-                        <p class="text-warning text-center">Your Account has Been Blocked</p>
-                        <div class="mt-2 ">
+                        <p class="text-warning text-center">Your Account has Been Blocked till 24hrs</p>
+                    </c:if>
+                    <c:if test="${result eq 'reset'}">
+                        <div class="mt-2">
+                            <p class="text-warning text-center">You can Reset Password</p>
                             <p class="text-center"><a class="link-opacity-50 " href="VerifyEmail.jsp">forgot password</a></p>
                         </div>
                     </c:if>

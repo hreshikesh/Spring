@@ -1,6 +1,6 @@
 package com.xworkz.module.service;
 
-import com.xworkz.module.dto.ContactDto;
+import com.xworkz.module.dto.UpdateDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.entity.RegisterEntity;
 import com.xworkz.module.repository.RegisterRepository;
@@ -16,6 +16,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 @Service
@@ -41,25 +42,38 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public RegisterDto find(String name, String password) {
         RegisterDto registerDto=new RegisterDto();
+        LocalDateTime localDateTime=LocalDateTime.now();
 
         RegisterEntity entity = registerRepository.find(name);
         if(entity==null){
-            return null;
+            registerDto.setName("notfound");
+            return registerDto;
         }
         else {
-            if (entity.getLoginAttempt()>=3) {
-                RegisterDto dto = new RegisterDto();
-                dto.setName("Locked");
-                return dto;
+            if (entity.getLoginAttempt()>=3 ) {
+                if(localDateTime.isAfter(entity.getLocalDateTime())){
+                    RegisterDto dto = new RegisterDto();
+                    dto.setName("TimeOut");
+                    return dto;
+                }else{
+                    RegisterDto dto = new RegisterDto();
+                    dto.setName("Locked");
+                    return dto;
+                }
             }
             else {
                 if (passwordEncoder.matches(password, entity.getPassword())) {
                     BeanUtils.copyProperties(entity, registerDto);
                     entity.setLoginAttempt(0);
+                    entity.setLocalDateTime(null);
                     return registerDto;
                 } else {
                     int trails = entity.getLoginAttempt() + 1;
+                    entity.setLocalDateTime(localDateTime);
                     entity.setLoginAttempt(trails);
+                    if(entity.getLoginAttempt()>=3){
+                        entity.setLocalDateTime(entity.getLocalDateTime().plusDays(1));
+                    }
                 }
             }
             registerRepository.updateTable(entity);
@@ -87,7 +101,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public boolean updateProfile(ContactDto dto) {
+    public boolean updateProfile(UpdateDto dto) {
         RegisterEntity register=new RegisterEntity();
         register.setName(dto.getName());
         register.setEmail(dto.getEmail());

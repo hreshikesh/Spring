@@ -8,14 +8,6 @@ nameError.innerText="Name length between 3 and 10 and name should not contain nu
 nameError.innerText="";
 }
 }
-//
-//function checkValue(event){
-//let char=event.key;
-//let pattern=/^[A-Za-z ]$/
-//if(!pattern.test(char)){
-//event.preventDefault();
-//}
-//}
 
 function validateEmail(){
 let userEmail=document.getElementById("emailId").value;

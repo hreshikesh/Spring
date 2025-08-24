@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,7 +44,7 @@ public class RegisterEntity {
     @Column(name="login_attempt")
     private int loginAttempt=0;
 
-    @Column(name="is_locked")
-    private Boolean isLocked=false;
+    @Column(name="local_date_time")
+    private LocalDateTime localDateTime;
 
 }

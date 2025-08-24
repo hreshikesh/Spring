@@ -115,6 +115,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             register=findByEmail(email);
             register.setPassword(password);
             register.setLoginAttempt(0);
+            register.setLocalDateTime(null);
 
             entityManager.merge(register);
             transaction.commit();
