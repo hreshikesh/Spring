@@ -58,6 +58,7 @@ public class RegisterServiceImpl implements RegisterService {
                 }else{
                     RegisterDto dto = new RegisterDto();
                     dto.setName("Locked");
+                    getEmail(entity.getEmail(), "Account Status","Dear "+entity.getName()+"\n\nYour account has been Blocked for 24hrs .Please reset the password after 24hrs");
                     return dto;
                 }
             }
