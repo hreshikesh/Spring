@@ -66,14 +66,11 @@
             <div class="mb-3 text-center">
                 <button class="btn btn-danger w-50 ">Submit</button>
             </div>
-
-
         </form>
 
         <div>
             <c:if test="${not empty status}">
-                <c:choose>
-                    <c:when test="${status == true}">
+                    <c:if test="${status==true}">
                         <div class="modal fade show d-block" id="exampleModal" tabindex="-1" aria-labelledby="success" aria-modal="true" role="dialog">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content bg-dark">
@@ -90,13 +87,12 @@
                             </div>
                         </div>
                         <div class="modal-backdrop fade show"></div>
-                    </c:when>
-                    <c:otherwise>
+                    </c:if>
+                    <c:if test="${status==false}">
                         <div class="alert alert-danger text-center mt-3" role="alert">
                             Password not updated. Try again.
                         </div>
-                    </c:otherwise>
-                </c:choose>
+                    </c:if>
             </c:if>
 
         </div>

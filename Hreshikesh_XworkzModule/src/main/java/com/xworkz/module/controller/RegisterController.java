@@ -71,16 +71,18 @@ public class RegisterController {
 
     }
 
-    @RequestMapping("verify")
+    @RequestMapping("verifyUserEmail")
     public ModelAndView verifyEmail(String email, ModelAndView modelAndView) {
         RegisterDto registerDto = registerService.findByEmail(email);
+        modelAndView.addObject("email",email);
         if (registerDto != null) {
+            modelAndView.addObject("status","success");
             modelAndView.setViewName("ForgotPassword");
-            modelAndView.addObject("email",email);
         } else {
             modelAndView.addObject("status", "fail");
             modelAndView.setViewName("VerifyEmail");
         }
+
         return modelAndView;
     }
 
@@ -91,7 +93,6 @@ public class RegisterController {
             view.addObject("errors", result.getAllErrors());
             view.setViewName("ForgotPassword");
         } else {
-            RegisterDto registerDto=registerService.findByEmail(passwordDto.getEmail());
             boolean updateStatus = registerService.updatePassword(passwordDto.getPassword());
             view.addObject("status", updateStatus);
             view.setViewName("ForgotPassword");
