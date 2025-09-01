@@ -16,5 +16,9 @@ public interface RegisterService {
 
     boolean updateProfile(UpdateDto dto);
 
+    void sendOtp(String email);
+
+    boolean verifyOtp(String otp);
+
 
 }

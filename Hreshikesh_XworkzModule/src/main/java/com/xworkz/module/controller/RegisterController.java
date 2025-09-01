@@ -130,6 +130,45 @@ public class RegisterController {
         modelAndView.setViewName("Home");
         return modelAndView;
     }
+
+
+    @RequestMapping("emailVerify")
+    public ModelAndView verifyUserMail(String email,ModelAndView modelAndView){
+        RegisterDto dto=registerService.findByEmail(email);
+        if(dto==null){
+            modelAndView.addObject("result","notVerified");
+            modelAndView.setViewName("OtpLogin");
+        }else{
+           registerService.sendOtp(email);
+            modelAndView.addObject("result","verified");
+            modelAndView.setViewName("OtpLogin");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("otpVerify")
+    public  ModelAndView verifyOtp(String email,String otp,ModelAndView view,HttpSession session){
+        boolean check=registerService.verifyOtp(otp);
+        if(!check){
+            view.addObject("status","fail");
+            view.setViewName("OtpLogin");
+        }
+        else {
+            view.addObject("status","success");
+            RegisterDto dto=registerService.findByEmail(email);
+            session.setAttribute("loginName",dto.getName());
+            session.setAttribute("loginEmail",dto.getEmail());
+            view.setViewName("Home");
+        }
+
+        return view;
+    }
+
+    @RequestMapping("resendOtp")
+    public String resendOtp(String email){
+        registerService.sendOtp(email);
+        return "OtpLogin";
+    }
 }
 
 

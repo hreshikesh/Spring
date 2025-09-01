@@ -57,6 +57,7 @@
                     </c:if>
                     <c:if test="${result eq 'fail'}">
                         <p class="text-warning text-center">Your Account has Been Blocked till 24hrs</p>
+                        <p class="text-center"><a class="link-opacity-50 " href="VerifyEmail.jsp">forgot password</a></p>
                     </c:if>
                     <c:if test="${result eq 'reset'}">
                         <div class="mt-2">

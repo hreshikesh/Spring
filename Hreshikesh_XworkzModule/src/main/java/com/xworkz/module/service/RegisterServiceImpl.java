@@ -115,7 +115,22 @@ public class RegisterServiceImpl implements RegisterService {
 
 
     }
+    private String generatedOtp="";
+    @Override
+    public void sendOtp(String email) {
+      Random random=new Random();
+      StringBuilder builder=new StringBuilder();
+        for (int i = 0; i <6 ; i++) {
+            builder.append(random);
+        }
+        generatedOtp=builder.toString();
+        getEmail(email,"OTP Sent","Dear User ,"+"\nThe Otp for  you is \n"+generatedOtp);
+    }
 
+    @Override
+    public boolean verifyOtp(String otp) {
+        return otp.equals(generatedOtp);
+    }
 
 
     private void getEmail(String email,String subject,String body){
