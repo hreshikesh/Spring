@@ -94,6 +94,7 @@ public class RegisterController {
             view.setViewName("ForgotPassword");
         } else {
             boolean updateStatus = registerService.updatePassword(passwordDto.getPassword());
+            view.addObject("submitted", true);
             view.addObject("status", updateStatus);
             view.setViewName("ForgotPassword");
 
@@ -131,44 +132,49 @@ public class RegisterController {
         return modelAndView;
     }
 
-
     @RequestMapping("emailVerify")
-    public ModelAndView verifyUserMail(String email,ModelAndView modelAndView){
-        RegisterDto dto=registerService.findByEmail(email);
-        if(dto==null){
-            modelAndView.addObject("result","notVerified");
+    public ModelAndView verifyUserMail(String email, ModelAndView modelAndView,HttpSession session) {
+        RegisterDto dto = registerService.findByEmail(email);
+        if (dto != null) {
+            registerService.sendOtp(email);
+            modelAndView.addObject("result", "verified");
+            session.setAttribute("loginEmailForOtp",email);
             modelAndView.setViewName("OtpLogin");
-        }else{
-           registerService.sendOtp(email);
-            modelAndView.addObject("result","verified");
+
+        } else {
+            modelAndView.addObject("result", "notVerified");
             modelAndView.setViewName("OtpLogin");
+            modelAndView.addObject("email", email);
         }
         return modelAndView;
     }
-
     @RequestMapping("otpVerify")
-    public  ModelAndView verifyOtp(String email,String otp,ModelAndView view,HttpSession session){
-        boolean check=registerService.verifyOtp(otp);
-        if(!check){
-            view.addObject("status","fail");
+    public ModelAndView verifyOtp( String otp, ModelAndView view, HttpSession session) {
+        String email=(String) session.getAttribute("loginEmailForOtp");
+        boolean check = registerService.verifyOtp(otp);
+        if (!check) {
+            view.addObject("status", "fail");
+            view.addObject("email", email);
             view.setViewName("OtpLogin");
-        }
-        else {
-            view.addObject("status","success");
-            RegisterDto dto=registerService.findByEmail(email);
-            session.setAttribute("loginName",dto.getName());
-            session.setAttribute("loginEmail",dto.getEmail());
+        } else {
+            RegisterDto dto = registerService.findByEmail(email);
+                session.setAttribute("loginName", dto.getName());
+                session.setAttribute("loginEmail", dto.getEmail());
             view.setViewName("Home");
         }
-
         return view;
     }
 
     @RequestMapping("resendOtp")
-    public String resendOtp(String email){
+    public ModelAndView resendOtp( ModelAndView view,HttpSession session) {
+        String email=(String) session.getAttribute("loginEmailForOtp");
         registerService.sendOtp(email);
-        return "OtpLogin";
+        view.addObject("email", email);
+        view.addObject("result", "verified");
+        view.setViewName("OtpLogin");
+        return view;
     }
+
 }
 
 

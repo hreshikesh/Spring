@@ -16,7 +16,7 @@
                  alt="xworkz" width="100" height="50">
         </a>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-outline-danger rounded-pill m-2" href="OtpLogin.jsp" role="button">SignIn</a>
+            <a class="btn btn-outline-danger rounded-pill m-2" href="OtpLogin.jsp" role="button">OTP SignIn</a>
             <a class="btn btn-outline-danger rounded-pill m-2" href="signin.jsp" role="button">SignIn</a>
             <a class="btn btn-outline-danger rounded-pill m-2" href="signup.jsp" role="button">SignUp</a>
 

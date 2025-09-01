@@ -67,9 +67,8 @@
                 <button class="btn btn-danger w-50 ">Submit</button>
             </div>
         </form>
-
         <div>
-            <c:if test="${not empty status}">
+            <c:if test="${submitted}">
                     <c:if test="${status==true}">
                         <div class="modal fade show d-block" id="exampleModal" tabindex="-1" aria-labelledby="success" aria-modal="true" role="dialog">
                             <div class="modal-dialog modal-dialog-centered ">

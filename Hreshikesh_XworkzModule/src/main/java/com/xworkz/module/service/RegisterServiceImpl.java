@@ -86,12 +86,15 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public RegisterDto findByEmail(String email) {
         RegisterEntity register=registerRepository.findByEmail(email);
-        System.out.println(register);
-        RegisterDto registerDto=new RegisterDto();
-        BeanUtils.copyProperties(register,registerDto);
-        System.out.println(registerDto);
-        fetchedEmail= registerDto.getEmail();
-       return registerDto;
+        if(register.getEmail()==null){
+            return null;
+        }else {
+            RegisterDto registerDto = new RegisterDto();
+            BeanUtils.copyProperties(register, registerDto);
+            System.out.println(registerDto);
+            fetchedEmail = registerDto.getEmail();
+            return registerDto;
+        }
     }
     @Override
     public boolean updatePassword(String password) {
@@ -121,7 +124,7 @@ public class RegisterServiceImpl implements RegisterService {
       Random random=new Random();
       StringBuilder builder=new StringBuilder();
         for (int i = 0; i <6 ; i++) {
-            builder.append(random);
+            builder.append(random.nextInt(10));
         }
         generatedOtp=builder.toString();
         getEmail(email,"OTP Sent","Dear User ,"+"\nThe Otp for  you is \n"+generatedOtp);
