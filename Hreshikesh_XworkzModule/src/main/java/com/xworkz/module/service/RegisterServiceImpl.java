@@ -5,6 +5,8 @@ import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.entity.RegisterEntity;
 import com.xworkz.module.repository.RegisterRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +24,7 @@ import java.util.Random;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
+    private static final Logger log = LoggerFactory.getLogger(RegisterServiceImpl.class);
     @Autowired
     private RegisterRepository registerRepository;
     BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
@@ -51,7 +54,7 @@ public class RegisterServiceImpl implements RegisterService {
             return registerDto;
         }
         else {
-            if (entity.getLoginAttempt()>=3 ) {
+            if(entity.getLoginAttempt()==3 ) {
                 if(localDateTime.isAfter(entity.getLocalDateTime())){
                     RegisterDto dto = new RegisterDto();
                     dto.setName("TimeOut");
@@ -73,7 +76,7 @@ public class RegisterServiceImpl implements RegisterService {
                     int trails = entity.getLoginAttempt() + 1;
                     entity.setLocalDateTime(localDateTime);
                     entity.setLoginAttempt(trails);
-                    if(entity.getLoginAttempt()>=3){
+                    if(entity.getLoginAttempt()==3){
                         entity.setLocalDateTime(entity.getLocalDateTime().plusDays(1));
                     }
                 }
@@ -91,7 +94,7 @@ public class RegisterServiceImpl implements RegisterService {
         }else {
             RegisterDto registerDto = new RegisterDto();
             BeanUtils.copyProperties(register, registerDto);
-            System.out.println(registerDto);
+           log.info(registerDto.toString());
             fetchedEmail = registerDto.getEmail();
             return registerDto;
         }

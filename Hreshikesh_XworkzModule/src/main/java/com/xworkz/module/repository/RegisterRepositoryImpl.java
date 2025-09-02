@@ -84,7 +84,6 @@ public class RegisterRepositoryImpl implements RegisterRepository{
            Query query= entityManager.createNamedQuery("checkEmail");
            query.setParameter("emailBy",email);
             register=(RegisterEntity) query.getSingleResult();
-            System.out.println(register);
 
             transaction.commit();
 

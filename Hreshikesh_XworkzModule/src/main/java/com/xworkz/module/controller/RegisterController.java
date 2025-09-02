@@ -4,6 +4,7 @@ import com.xworkz.module.dto.UpdateDto;
 import com.xworkz.module.dto.PasswordDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.service.RegisterService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
+@Slf4j
 @Controller
 @RequestMapping("/")
 public class RegisterController {
@@ -62,7 +63,7 @@ public class RegisterController {
     public ModelAndView showUpdate(ModelAndView view,HttpSession session) {
         String sessionEmail=(String)session.getAttribute("loginEmail");
         RegisterDto registerDto = registerService.findByEmail(sessionEmail);
-        System.out.println(registerDto);
+        log.info(registerDto.toString());
         if (registerDto != null) {
             view.addObject("dto", registerDto);
         }
@@ -82,7 +83,6 @@ public class RegisterController {
             modelAndView.addObject("status", "fail");
             modelAndView.setViewName("VerifyEmail");
         }
-
         return modelAndView;
     }
 
