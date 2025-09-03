@@ -20,7 +20,7 @@ public interface RegisterService {
 
     boolean verifyOtp(String otp);
 
-    long countByEmail(String email);
+    int countByEmail(String email);
 
 
 }

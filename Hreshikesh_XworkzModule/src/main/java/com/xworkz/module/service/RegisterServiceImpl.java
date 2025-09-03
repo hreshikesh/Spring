@@ -138,9 +138,8 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public long countByEmail(String email) {
-        long count=registerRepository.countEmail(email);
-        return count;
+    public int countByEmail(String email) {
+        return Math.toIntExact(registerRepository.countEmail(email));
     }
 
 

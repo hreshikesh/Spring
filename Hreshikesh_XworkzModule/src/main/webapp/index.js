@@ -20,6 +20,21 @@ emailError.innerText="";
 }
 }
 
+
+function checkEmail(){
+let userEmail=document.getElementById("emailId").value;
+let emailError=document.getElementById("emailErrorId");
+
+const xhttp=new XMLHttpRequest();
+
+xhttp.open("GET","http://localhost:8080/Hreshikesh_XworkzModule/checkEmail/"+userEmail);
+xhttp.send();
+
+xhttp.onload=function(){
+emailError.innerHTML=this.responseText;
+}
+}
+
 function validatePhone(){
 let userPhone=document.getElementById("phoneId").value;
 let phoneError=document.getElementById("phoneErrorId");

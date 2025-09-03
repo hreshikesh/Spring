@@ -46,7 +46,7 @@
                 </div>
                 <div class="col">
                     <label for="emailId" class="form-label">Email</label>
-                    <input type="email" oninput="validateEmail()" class="form-control" id="emailId" name="email" value="${dto.email}" required>
+                    <input type="email" oninput="validateEmail()" onchange="checkEmail()" class="form-control" id="emailId" name="email" value="${dto.email}" required>
                     <span id="emailErrorId" class="text-danger"></span>
                 </div>
             </div>
