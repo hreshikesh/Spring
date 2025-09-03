@@ -19,7 +19,6 @@
             <a class="btn btn-outline-danger rounded-pill m-2" href="OtpLogin.jsp" role="button">OTP SignIn</a>
             <a class="btn btn-outline-danger rounded-pill m-2" href="signin.jsp" role="button">SignIn</a>
             <a class="btn btn-outline-danger rounded-pill m-2" href="signup.jsp" role="button">SignUp</a>
-
         </div>
     </div>
 </nav>

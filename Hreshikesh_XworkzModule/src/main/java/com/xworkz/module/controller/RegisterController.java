@@ -19,7 +19,7 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @RequestMapping("/register")
+    @RequestMapping("register")
     public ModelAndView registerForm(@Valid RegisterDto registerDto, BindingResult result, ModelAndView modelAndView) {
         modelAndView.setViewName("signup");
 

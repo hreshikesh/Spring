@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 @NamedQuery(name="getSignUpDetails",query = "select e from RegisterEntity e where name=:nameBy")
 @NamedQuery(name="checkEmail",query = "select e from RegisterEntity e where email=:emailBy")
+@NamedQuery(name = "countEmail",query = "select count(e.email) from RegisterEntity e where email:email")
 
 public class RegisterEntity {
     @Id

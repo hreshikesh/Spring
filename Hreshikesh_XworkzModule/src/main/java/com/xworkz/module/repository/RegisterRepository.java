@@ -14,4 +14,6 @@ public interface RegisterRepository {
     boolean updateProfile(RegisterEntity register);
 
     void updateTable(RegisterEntity entity);
+
+    Long countEmail(String email);
 }

@@ -42,7 +42,6 @@ public class RegisterServiceImpl implements RegisterService {
         return registerRepository.save(registerEntity);
     }
 
-
     @Override
     public RegisterDto find(String name, String password) {
         RegisterDto registerDto=new RegisterDto();
@@ -136,6 +135,12 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public boolean verifyOtp(String otp) {
         return otp.equals(generatedOtp);
+    }
+
+    @Override
+    public long countByEmail(String email) {
+        long count=registerRepository.countEmail(email);
+        return count;
     }
 
 

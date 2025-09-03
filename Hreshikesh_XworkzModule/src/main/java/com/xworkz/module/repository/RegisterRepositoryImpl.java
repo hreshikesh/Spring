@@ -185,6 +185,32 @@ public class RegisterRepositoryImpl implements RegisterRepository{
         }
 
     }
+
+    @Override
+    public Long countEmail(String email) {
+        EntityManager manager=null;
+        EntityTransaction transaction=null;
+        long count = 0;
+        try {
+            manager= factory.createEntityManager();
+            transaction=manager.getTransaction();
+            transaction.begin();
+
+            Query query=manager.createNamedQuery("countEmail");
+            query.setParameter("email",email);
+             count=(Long) query.getSingleResult();
+
+            transaction.commit();
+        }catch (Exception e){
+            if(transaction!=null && transaction.isActive()){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            manager.close();
+        }
+        return count;
+    }
 }
 
 
