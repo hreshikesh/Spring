@@ -1,27 +1,25 @@
-package com.xworkz.module.controller;
+package com.xworkz.module.restcontroller;
 
 import com.xworkz.module.service.RegisterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 @Slf4j
-@RestController
+@org.springframework.web.bind.annotation.RestController
 @RequestMapping("/")
-public class EmailRestController {
+public class RestController {
     @Autowired
     RegisterService registerService;
-
-    @GetMapping("checkEmail/{userEmail}")
-    public String checkCount(@PathVariable String userEmail){
+    @GetMapping(value = "checkEmail/{userEmail}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String checkEmailCount(@PathVariable String userEmail){
        log.info(userEmail);
        int count= registerService.countByEmail(userEmail);
        log.info(String.valueOf(count));
-       if(count==0) return "Email Valid";
+       if(count==0) return " ";
        else return "Email already exists";
     }
-
-
 }

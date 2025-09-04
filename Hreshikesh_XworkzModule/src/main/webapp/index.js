@@ -76,9 +76,23 @@ let passwordPattern=/^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\d){3,}).{8,15}$/;
 
 if(!passwordPattern.test(userPassword)){
 passwordError.innerText="Must have 1sp,3no,1cap Must be 8-15 char";
-
 }else{
 passwordError.innerText="";
+checkPassword();
+}
+}
+
+
+function checkPassword(){
+let userPassword=document.getElementById("passwordId").value;
+let passwordError=document.getElementById("passwordErrorId");
+
+const xhttp=new XMLHttpRequest();
+xhttp.open("GET","http://localhost:8080/Hreshikesh_XworkzModule/checkPassword/"+userPassword")
+xhttp.send()
+
+xhttp.onload=function(){
+passwordError.innerHTML=this.responseText;
 }
 }
 

@@ -41,7 +41,6 @@
 <div class="container d-flex justify-content-center mt-4 align-items-center min-vh-100">
     <div class=" p-5 shadow-lg w-75 mb-5 rounded">
         <h3 class="fw-bold display-4 text-center text-danger mb-3">Update Password</h3>
-
         <form action="updatePassword" class="bg-dark p-4 " method="post">
             <div class="row mb-3">
                 <div class="col-6 mx-auto">
