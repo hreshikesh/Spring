@@ -2,6 +2,8 @@ package com.xworkz.module.repository;
 
 import com.xworkz.module.entity.RegisterEntity;
 
+import java.util.List;
+
 public interface RegisterRepository {
     boolean save(RegisterEntity entity);
 
@@ -16,4 +18,6 @@ public interface RegisterRepository {
     void updateTable(RegisterEntity entity);
 
     Long countEmail(String email);
+
+    List<String> checkPassword(String password);
 }

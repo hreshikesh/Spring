@@ -22,5 +22,7 @@ public interface RegisterService {
 
     int countByEmail(String email);
 
+    boolean passwordValidate(String passworrd);
+
 
 }

@@ -88,7 +88,7 @@ let userPassword=document.getElementById("passwordId").value;
 let passwordError=document.getElementById("passwordErrorId");
 
 const xhttp=new XMLHttpRequest();
-xhttp.open("GET","http://localhost:8080/Hreshikesh_XworkzModule/checkPassword/"+userPassword")
+xhttp.open("GET","http://localhost:8080/Hreshikesh_XworkzModule/checkPassword/"+userPassword)
 xhttp.send()
 
 xhttp.onload=function(){

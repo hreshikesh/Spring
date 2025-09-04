@@ -19,6 +19,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -140,6 +141,19 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public int countByEmail(String email) {
         return Math.toIntExact(registerRepository.countEmail(email));
+    }
+
+    @Override
+    public boolean passwordValidate(String password) {
+
+       List<String> fetchedPasswords= registerRepository.checkPassword(password);
+       for (String fetchedPassword:fetchedPasswords){
+           if(!passwordEncoder.matches(password,fetchedPassword)){
+               return false;
+           }
+       }
+       return true;
+
     }
 
 

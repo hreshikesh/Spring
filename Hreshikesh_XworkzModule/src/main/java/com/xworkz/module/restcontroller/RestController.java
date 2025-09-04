@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RestController {
     @Autowired
     RegisterService registerService;
+
     @GetMapping(value = "checkEmail/{userEmail}",produces = MediaType.APPLICATION_JSON_VALUE)
     public String checkEmailCount(@PathVariable String userEmail){
        log.info(userEmail);
@@ -21,5 +22,14 @@ public class RestController {
        log.info(String.valueOf(count));
        if(count==0) return " ";
        else return "Email already exists";
+    }
+
+    @GetMapping(value = "checkPassword/{password}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String checkPassword(@PathVariable String password){
+            boolean check=registerService.passwordValidate(password);
+            if (!check){
+                return "Password already present";
+            }
+            return  "";
     }
 }

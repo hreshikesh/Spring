@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class RegisterRepositoryImpl implements RegisterRepository{
@@ -210,6 +212,31 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             manager.close();
         }
         return count;
+    }
+
+    @Override
+    public List<String> checkPassword(String password) {
+        EntityManager manager=null;
+        EntityTransaction transaction=null;
+        List<String> fetchedPassword=new ArrayList<>();
+        try {
+            manager= factory.createEntityManager();
+            transaction=manager.getTransaction();
+            transaction.begin();
+
+           Query query= manager.createNamedQuery("fetchPassword");
+            fetchedPassword= query.getResultList();
+
+            transaction.commit();
+        }catch (Exception e){
+            if(transaction!=null && transaction.isActive()){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            manager.close();
+        }
+        return fetchedPassword;
     }
 }
 
