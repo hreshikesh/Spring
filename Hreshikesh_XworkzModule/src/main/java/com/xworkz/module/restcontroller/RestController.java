@@ -27,9 +27,10 @@ public class RestController {
     @GetMapping(value = "checkPassword/{password}",produces = MediaType.APPLICATION_JSON_VALUE)
     public String checkPassword(@PathVariable String password){
             boolean check=registerService.passwordValidate(password);
-            if (!check){
+            if (check){
                 return "Password already present";
+            }else {
+                return " ";
             }
-            return  "";
     }
 }

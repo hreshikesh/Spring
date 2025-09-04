@@ -93,6 +93,7 @@ xhttp.send()
 
 xhttp.onload=function(){
 passwordError.innerHTML=this.responseText;
+
 }
 }
 
@@ -114,7 +115,6 @@ function validateConfirmPassword(){
 let userPassword=document.getElementById("passwordId").value;
 let confirmPassword=document.getElementById("cpasswordId").value;
 let cpasswordError=document.getElementById("cpasswordErrorId");
-
 if(userPassword!==confirmPassword){
 cpasswordError.innerText="Password doesnt match";
 }else{

@@ -148,18 +148,16 @@ public class RegisterServiceImpl implements RegisterService {
 
        List<String> fetchedPasswords= registerRepository.checkPassword(password);
        for (String fetchedPassword:fetchedPasswords){
-           if(!passwordEncoder.matches(password,fetchedPassword)){
-               return false;
+           if(passwordEncoder.matches(password,fetchedPassword)){
+               return true;
            }
        }
-       return true;
+       return false;
 
     }
 
 
     private void getEmail(String email,String subject,String body){
-
-
         final String username = "ailhreshikesh@gmail.com";
         final String password = "mfbl tuzg xjsl zilu";
 
