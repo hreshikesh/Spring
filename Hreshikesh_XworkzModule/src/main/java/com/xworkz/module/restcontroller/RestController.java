@@ -28,7 +28,7 @@ public class RestController {
     public String checkPassword(@PathVariable String password){
             boolean check=registerService.passwordValidate(password);
             if (check){
-                return "Password already present";
+                return "Password already in use";
             }else {
                 return " ";
             }
