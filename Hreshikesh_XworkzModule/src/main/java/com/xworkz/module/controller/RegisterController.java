@@ -8,10 +8,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+
 @Slf4j
 @Controller
 @RequestMapping("/")
@@ -104,12 +113,18 @@ public class RegisterController {
     }
 
 
-    @RequestMapping("/updateprofile")
-    public ModelAndView updateProfile(@Valid UpdateDto dto, BindingResult result, ModelAndView view, HttpSession session) {
+    @PostMapping("/updateprofile")
+    public ModelAndView updateProfile(@RequestParam("image") MultipartFile file, @Valid UpdateDto dto, BindingResult result, ModelAndView view, HttpSession session) throws IOException {
         if (result.hasErrors()) {
             view.addObject("errors", result.getAllErrors());
             view.setViewName("UpdateForm");
         } else {
+            byte[] fileSize=file.getBytes();
+            Path filePath=Paths.get("D:\\moduleImages\\"+dto.getName()+System.currentTimeMillis()+".jpg");
+            Files.write(filePath,fileSize);
+            String storedPath=filePath.toString();
+            dto.setImagePath(storedPath);
+            log.info(dto.getImagePath());
             boolean status = registerService.updateProfile(dto);
             if (!status) {
                 view.addObject("status", "error");

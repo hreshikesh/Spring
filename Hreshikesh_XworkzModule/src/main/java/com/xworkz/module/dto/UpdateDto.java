@@ -28,4 +28,5 @@ public class UpdateDto {
     private String gender;
     @NotNull(message = "Address should be empty")
     private String address;
+    private String imagePath;
 }

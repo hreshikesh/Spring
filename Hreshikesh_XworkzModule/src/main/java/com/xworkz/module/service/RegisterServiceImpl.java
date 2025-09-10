@@ -116,6 +116,7 @@ public class RegisterServiceImpl implements RegisterService {
         register.setPhone(dto.getPhone());
         register.setAge(dto.getAge());
         register.setAddress(dto.getAddress());
+        register.setImagePath(dto.getImagePath());
 
         return registerRepository.updateProfile(register);
 

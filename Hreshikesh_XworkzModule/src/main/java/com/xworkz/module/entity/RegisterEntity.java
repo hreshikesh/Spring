@@ -49,4 +49,7 @@ public class RegisterEntity {
     @Column(name="local_date_time")
     private LocalDateTime localDateTime;
 
+    @Column(name="image_path")
+    private String imagePath;
+
 }

@@ -148,6 +148,7 @@ public class RegisterRepositoryImpl implements RegisterRepository{
             register1.setPhone(register.getPhone());
             register1.setAge(register.getAge());
             register1.setAddress(register.getAddress());
+            register1.setImagePath(register.getImagePath());
 
 
             entityManager.merge(register1);

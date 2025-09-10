@@ -32,7 +32,7 @@
                 </c:forEach>
             </div>
         </c:if>
-        <form action="updateprofile" class="bg-dark p-4 " method="post">
+        <form action="updateprofile" class="bg-dark p-4 " method="post" enctype="multipart/form-data">
             <div class="row mb-3">
                 <div class="col-6">
                     <label for="nameId" class="form-label">Name</label>
@@ -68,6 +68,11 @@
                 <textarea class="form-control" name="address" id="addressId"  style="height: 100px" required>${dto.address}
                 </textarea>
                 <label for="addressId">Address</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile02" name="image">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
             </div>
 
             <div class="mb-3">
