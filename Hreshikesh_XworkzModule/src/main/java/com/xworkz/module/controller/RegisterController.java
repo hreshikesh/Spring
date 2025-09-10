@@ -122,7 +122,7 @@ public class RegisterController {
             byte[] fileSize=file.getBytes();
             Path filePath=Paths.get("D:\\moduleImages\\"+dto.getName()+System.currentTimeMillis()+".jpg");
             Files.write(filePath,fileSize);
-            String storedPath=filePath.toString();
+            String storedPath=filePath.getFileName().toString();
             dto.setImagePath(storedPath);
             log.info(dto.getImagePath());
             boolean status = registerService.updateProfile(dto);
