@@ -32,4 +32,5 @@ public class RegisterDto {
     @NotNull(message = "Password should not be empty")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\\d){3,}).{3,15}$", message = "password should match")
     private String password;
+    private String imagePath;
 }

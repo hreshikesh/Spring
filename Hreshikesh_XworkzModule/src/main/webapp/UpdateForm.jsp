@@ -32,6 +32,21 @@
                 </c:forEach>
             </div>
         </c:if>
+
+        <div>
+            <c:choose>
+                <c:when test="${not empty dto and empty dto.imagePath}">
+                    <img src="images/userdefualt.png" class="rounded-circle mx-auto d-block w-25" alt="profile">
+                </c:when>
+                <c:otherwise>
+                    <img src="download?imagePath=${dto.imagePath}" class="rounded-circle mx-auto d-block w-25" alt="profile">
+                </c:otherwise>
+            </c:choose>
+
+
+
+
+        </div>
         <form action="updateprofile" class="bg-dark p-4 " method="post" enctype="multipart/form-data">
             <div class="row mb-3">
                 <div class="col-6">

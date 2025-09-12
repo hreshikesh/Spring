@@ -1,21 +1,28 @@
 package com.xworkz.module.controller;
 
+import com.sun.deploy.net.HttpResponse;
 import com.xworkz.module.dto.UpdateDto;
 import com.xworkz.module.dto.PasswordDto;
 import com.xworkz.module.dto.RegisterDto;
 import com.xworkz.module.service.RegisterService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -72,13 +79,21 @@ public class RegisterController {
     public ModelAndView showUpdate(ModelAndView view,HttpSession session) {
         String sessionEmail=(String)session.getAttribute("loginEmail");
         RegisterDto registerDto = registerService.findByEmail(sessionEmail);
+        UpdateDto updateDto=new UpdateDto();
+        BeanUtils.copyProperties(registerDto,updateDto);
         log.info(registerDto.toString());
-        if (registerDto != null) {
-            view.addObject("dto", registerDto);
-        }
+        view.addObject("dto", updateDto);
         view.setViewName("UpdateForm");
         return view;
-
+    }
+    @GetMapping("download")
+    public void download(HttpServletResponse response, @RequestParam String imagePath) throws IOException {
+        response.setContentType("image/jpeg");
+        File file=new File("D:\\moduleImages\\"+imagePath);
+        InputStream inputStream=new BufferedInputStream(new FileInputStream(file));
+        ServletOutputStream outputStream=response.getOutputStream();
+        IOUtils.copy(inputStream,outputStream);
+        response.flushBuffer();
     }
 
     @RequestMapping("verifyUserEmail")
