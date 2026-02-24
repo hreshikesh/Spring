@@ -1,0 +1,33 @@
+1️ What is the Java Collections Framework?
+
+The Java Collections Framework (JCF) is a set of interfaces and classes that
+ store and manipulate groups of objects in a standardized way.
+
+ Collection heirarchy
+
+ Iterable
+   → Collection
+         → List
+         → Set
+         → Queue
+         → Deque
+ 2 Difference between Collection and Collections?
+   Collection	                            Collections
+   Extends Iterable                         Extends Object
+   Interface	                           Utility (helper) class
+   Represents a group of objects	Has static methods like sort(), reverse(), shuffle()
+   Can include abstract, default,          Only Static methods
+   and static methods (since Java 8)
+
+
+ 3 | Type     | Stores          | Order          | Duplicates            |
+   | -------- | --------------- | -------------- | --------------------- |
+   | **List** | Elements        | Ordered        | Yes                   |
+   | **Set**  | Elements        | Not guaranteed | No                    |
+   | **Map**  | Key-Value pairs | Not guaranteed | Keys: No, Values: Yes |
+
+4| Iterator                  | ListIterator           |
+ | ------------------------- | ---------------------- |
+ | Works on List, Set, Queue | Works only on List     |
+ | Forward only              | Forward + backward     |
+ | Only remove()             | add(), set(), remove() |

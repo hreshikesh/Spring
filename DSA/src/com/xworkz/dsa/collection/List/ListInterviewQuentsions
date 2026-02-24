@@ -1,0 +1,24 @@
+1 Difference between ArrayList and LinkedList?
+
+| Feature             | ArrayList      | LinkedList           |
+| ------------------- | -------------- | -------------------- |
+| Storage             | Dynamic array  | Doubly-linked list   |
+| Insertion at middle | Slow           | Fast                 |
+| Access by index     | Very fast O(1) | Slow O(n)            |
+| Memory              | Less           | More (node pointers) |
+
+2 When to use ArrayList vs LinkedList?
+
+  Use ArrayList when access is frequent
+
+  Use LinkedList when insert/delete in middle is frequent
+
+
+3 How ArrayList grows internally?
+
+  Old capacity: n
+  New capacity: 1.5 × n
+
+4 What is initial capacity of ArrayList?
+
+  Default = 10
