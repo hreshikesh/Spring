@@ -1,6 +1,5 @@
 package com.xworkz.module.controller;
 
-import com.sun.deploy.net.HttpResponse;
 import com.xworkz.module.dto.UpdateDto;
 import com.xworkz.module.dto.PasswordDto;
 import com.xworkz.module.dto.RegisterDto;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,7 +24,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
+
 
 @Slf4j
 @Controller
