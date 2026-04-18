@@ -1,0 +1,206 @@
+🔹 1. Tell me about yourself
+
+Answer:
+“I’m a Java full-stack developer with around 1–3 years of hands-on experience working on Spring Boot and web applications. I’ve worked on projects like a hospital management system where I handled backend logic, database integration, and UI using Bootstrap. I focus on writing clean, maintainable code and understanding the full request flow from frontend to database.”
+
+🔹 2. Why should we hire you?
+
+“I bring practical experience, not just theoretical knowledge. I’ve already worked on real-world projects, understand deadlines, and can contribute from day one without heavy training.”
+
+🔹 3. What are your strengths?
+Problem-solving
+Quick learner
+Strong fundamentals in Java & collections
+
+Answer:
+“One key strength is breaking down complex problems into smaller parts and solving them efficiently.”
+
+🔹 4. What are your weaknesses?
+
+“I sometimes spend extra time perfecting code, but I’ve learned to balance quality with deadlines.”
+
+🔹 5. Why are you leaving your current job?
+
+“I’m looking for better growth opportunities, challenging projects, and a chance to work on scalable systems.”
+
+🔹 6. Where do you see yourself in 5 years?
+
+“I see myself as a senior developer contributing to system design and mentoring juniors.”
+
+🔹 7. Describe a challenging situation you faced
+
+“In one project, we had a bug in database mapping that caused incorrect data. I debugged using logs, identified the issue in DTO mapping, and fixed it without impacting other modules.”
+
+🔹 8. How do you handle pressure?
+
+“I prioritize tasks, break work into smaller steps, and focus on one issue at a time.”
+
+🔹 9. Are you a team player?
+
+“Yes. Most of my project work involved coordination between frontend and backend teams.”
+
+🔹 10. Describe your ideal work environment
+
+“A collaborative environment with clear goals and opportunities to learn.”
+
+🔹 11. What motivates you?
+
+“Solving real-world problems and seeing my code actually being used.”
+
+🔹 12. How do you handle criticism?
+
+“I take it constructively and use it to improve my work.”
+
+🔹 13. Tell me about a time you made a mistake
+
+“I once missed null checks leading to a runtime error. After that, I started following defensive coding practices.”
+
+🔹 14. What is your biggest achievement?
+
+“Building a full-stack application independently and deploying it successfully.”
+
+🔹 15. How do you prioritize tasks?
+
+“I use urgency vs importance and focus on deadlines first.”
+
+🔹 16. Do you prefer working alone or in a team?
+
+“I’m comfortable with both, but I prefer team collaboration for better ideas.”
+
+🔹 17. How do you learn new technologies?
+
+“Through documentation, hands-on projects, and debugging real problems.”
+
+🔹 18. What do you know about our company?
+
+👉 (Customize before interview)
+
+🔹 19. Are you willing to relocate?
+
+“Yes.”
+
+🔹 20. What are your salary expectations?
+
+“I’m open to a fair offer based on my skills and market standards.”
+
+🔹 21. Why did you choose Java?
+
+“Because of its strong ecosystem, scalability, and enterprise usage.”
+
+🔹 22. How do you handle tight deadlines?
+
+“I focus on core functionality first, then optimize.”
+
+🔹 23. Have you led a team?
+
+“I’ve taken ownership of modules and guided teammates when needed.”
+
+🔹 24. What is your leadership style?
+
+“Leading by example and supporting team members.”
+
+🔹 25. How do you deal with conflicts?
+
+“I listen to both sides and focus on solving the issue, not blaming.”
+
+🔹 26. What if you don’t know something?
+
+“I’ll admit it and quickly learn it.”
+
+🔹 27. What makes you different?
+
+“My combination of practical project experience and strong fundamentals.”
+
+🔹 28. How do you ensure code quality?
+
+“Code reviews, testing, and following best practices.”
+
+🔹 29. What is your biggest failure?
+
+“Initially struggling with debugging, but now it’s one of my strengths.”
+
+🔹 30. Do you take risks?
+
+“Yes, but calculated risks in learning and projects.”
+
+🔹 31. How do you manage time?
+
+“Using task lists and deadlines.”
+
+🔹 32. What do you do outside work?
+
+“Learning new tech and building projects.”
+
+🔹 33. Why gap in career? (if asked)
+
+“I was focusing on skill development and projects.”
+
+🔹 34. How do you handle repetitive work?
+
+“I try to automate or optimize it.”
+
+🔹 35. What is professionalism?
+
+“Meeting commitments, respecting deadlines, and maintaining quality.”
+
+🔹 36. What is your communication style?
+
+“Clear and concise, especially in technical discussions.”
+
+🔹 37. How do you handle feedback from managers?
+
+“I implement it and improve quickly.”
+
+🔹 38. What if you disagree with your manager?
+
+“I respectfully discuss with data or logic.”
+
+🔹 39. How fast can you join?
+
+“Immediately / as per notice period.”
+
+🔹 40. What is your notice period?
+
+(Answer honestly)
+
+🔹 41. How do you stay updated?
+
+“Tech blogs, documentation, and practice.”
+
+🔹 42. What is your dream company?
+
+“A company with strong engineering culture.”
+
+🔹 43. Are you comfortable working overtime?
+
+“Yes, when required.”
+
+🔹 44. How do you handle failure?
+
+“I analyze, learn, and improve.”
+
+🔹 45. What would your manager say about you?
+
+“Reliable and consistent performer.”
+
+🔹 46. Why should we not hire you?
+
+“I might take extra time initially to understand systems deeply—but that ensures better output later.”
+
+🔹 47. What are your short-term goals?
+
+“To strengthen backend and system design skills.”
+
+🔹 48. What kind of projects excite you?
+
+“Scalable backend systems and real-world applications.”
+
+🔹 49. Do you have any questions for us?
+
+Always ask:
+
+“What technologies does the team currently use?”
+“What are the biggest challenges in this role?”
+🔹 50. Final HR Question: Any final thoughts?
+
+“I’m confident I can contribute effectively and grow with your team.”
