@@ -1,0 +1,199 @@
+1. What is Python?
+
+Python is a high-level, interpreted, dynamically typed language known for readability and rapid development.
+
+2. What are Python’s key features?
+Interpreted
+Dynamically typed
+Object-oriented + functional
+Large standard library
+3. What is PEP 8?
+
+Coding style guidelines for Python to improve readability and consistency.
+
+4. Difference: List vs Tuple
+List → mutable
+Tuple → immutable
+Tuple is faster
+5. What is a dictionary?
+
+Key-value data structure with O(1) average lookup.
+
+6. What is a set?
+
+Unordered collection of unique elements.
+
+7. Mutable vs Immutable
+Mutable → list, dict, set
+Immutable → int, str, tuple
+8. What is dynamic typing?
+
+Type is decided at runtime, not compile time.
+
+9. What is indentation?
+
+Python uses indentation instead of braces for blocks.
+
+10. What are Python keywords?
+
+Reserved words like if, else, def, class.
+
+🔹 FUNCTIONS & OOP
+11. What is a function?
+
+Reusable block of code defined using def.
+
+12. What are *args and **kwargs?
+*args → variable positional arguments
+**kwargs → variable keyword arguments
+13. What is lambda function?
+
+Anonymous one-line function.
+
+14. What is recursion?
+
+Function calling itself.
+
+15. What is a class?
+
+Blueprint for objects.
+
+16. What is inheritance?
+
+One class acquiring properties of another.
+
+17. What is polymorphism?
+
+Same function behaves differently.
+
+18. What is encapsulation?
+
+Wrapping data + methods together.
+
+19. What is abstraction?
+
+Hiding internal details.
+
+20. What is init?
+
+Constructor method in Python.
+
+🔹 MEMORY & INTERNALS
+21. What is garbage collection?
+
+Automatic memory management.
+
+22. What is reference counting?
+
+Object deleted when reference count becomes 0.
+
+23. What is GIL (Global Interpreter Lock)?
+
+Only one thread executes Python bytecode at a time.
+
+24. Shallow vs Deep Copy
+Shallow → references copied
+Deep → full copy
+25. What is id()?
+
+Returns memory address of object.
+
+🔹 EXCEPTIONS & FILES
+26. What is exception handling?
+
+Handling runtime errors using try-except.
+
+27. Difference: Error vs Exception
+Error → serious issue
+Exception → can be handled
+28. What is finally block?
+
+Executes always.
+
+29. How to read file?
+
+open(), read()
+
+30. What is with statement?
+
+Automatically closes file.
+
+🔹 ADVANCED PYTHON
+31. What are decorators?
+
+Functions that modify other functions.
+
+32. What are generators?
+
+Functions using yield to return values lazily.
+
+33. List comprehension?
+
+Short way to create lists.
+
+34. What is map()?
+
+Applies function to all elements.
+
+35. What is filter()?
+
+Filters elements based on condition.
+
+36. What is reduce()?
+
+Reduces list to single value.
+
+37. What are iterators?
+
+Objects that can be iterated.
+
+38. What is str vs repr?
+__str__ → user readable
+__repr__ → developer representation
+39. What is monkey patching?
+
+Modifying code at runtime.
+
+40. What is duck typing?
+
+“If it behaves like a duck, it’s a duck.”
+
+🔹 DATABASE & WEB (IMPORTANT FOR YOU)
+41. How Python connects to DB?
+
+Using libraries like sqlite3, psycopg2.
+
+42. What is ORM?
+
+Object Relational Mapping (e.g., Django ORM).
+
+43. What is Flask?
+
+Lightweight web framework.
+
+44. What is Django?
+
+Full-stack web framework.
+
+45. Difference: Flask vs Django
+Flask → lightweight
+Django → full-featured
+🔹 REAL INTERVIEW TRAPS
+46. Is Python pass by value or reference?
+
+Neither — it’s pass-by-object-reference.
+
+47. What is None?
+
+Represents absence of value.
+
+48. Difference: is vs ==
+== → value
+is → memory
+49. Why Python is slow?
+
+Because it is interpreted and dynamically typed.
+
+50. What is virtual environment?
+
+Isolated Python environment for dependencies.
